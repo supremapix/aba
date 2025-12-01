@@ -135,7 +135,7 @@ const Home: React.FC = () => {
           </p>
           <div className="flex justify-center gap-4">
             <Link to="/contato">
-              <Button className="bg-white text-aba-orange hover:bg-gray-100">Falar com Parcerias</Button>
+              <Button variant="white">Falar com Parcerias</Button>
             </Link>
           </div>
         </div>
