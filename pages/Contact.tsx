@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionTitle from '../components/SectionTitle';
 import Button from '../components/Button';
-import { CONTACT_INFO, FAQS } from '../constants';
+import { CONTACT_INFO, FAQS, WHATSAPP_URL } from '../constants';
 import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
@@ -25,11 +25,13 @@ const Contact: React.FC = () => {
                   <p className="text-gray-600">{CONTACT_INFO.address}</p>
                 </div>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center group">
                 <Phone className="h-6 w-6 text-aba-orange mr-4 shrink-0" />
                 <div>
                   <h4 className="font-bold text-gray-900">Telefone/WhatsApp</h4>
-                  <p className="text-gray-600">{CONTACT_INFO.phone}</p>
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-aba-blue transition-colors">
+                    {CONTACT_INFO.phone}
+                  </a>
                 </div>
               </div>
               <div className="flex items-center">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CONTACT_INFO } from '../constants';
+import { CONTACT_INFO, WHATSAPP_URL } from '../constants';
 import { Phone, MapPin, Mail, Instagram, Facebook, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -19,10 +19,10 @@ const Footer: React.FC = () => {
               Associação Barnabé. Transformando vidas e construindo futuros através do acolhimento e oportunidades para jovens.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-aba-orange transition-colors">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-white hover:text-aba-orange transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="#" className="text-white hover:text-aba-orange transition-colors">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-white hover:text-aba-orange transition-colors">
                 <Facebook className="h-6 w-6" />
               </a>
             </div>
