@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SectionTitle from '../components/SectionTitle';
 import Button from '../components/Button';
 import { CONTACT_INFO, FAQS, WHATSAPP_URL } from '../constants';
-import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, MessageCircle, ChevronDown, ChevronUp } from 'lucide-react';
+
+const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border border-gray-200 rounded-lg bg-white overflow-hidden transition-shadow hover:shadow-sm">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full text-left p-4 flex justify-between items-start focus:outline-none hover:bg-gray-50 transition-colors"
+        aria-expanded={isOpen}
+      >
+        <span className="font-bold text-aba-blue flex items-start pr-4">
+          <MessageCircle className="h-5 w-5 mr-2 mt-0.5 shrink-0 opacity-70" />
+          <span>{question}</span>
+        </span>
+        {isOpen ? (
+          <ChevronUp className="h-5 w-5 text-gray-400 shrink-0 mt-0.5" />
+        ) : (
+          <ChevronDown className="h-5 w-5 text-gray-400 shrink-0 mt-0.5" />
+        )}
+      </button>
+      {isOpen && (
+        <div className="px-4 pb-4 pl-11">
+          <p className="text-gray-600 text-sm border-t border-gray-100 pt-2 animate-in fade-in slide-in-from-top-1 duration-200">
+            {answer}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Contact: React.FC = () => {
   return (
@@ -75,15 +106,9 @@ const Contact: React.FC = () => {
 
              <div>
                <h3 className="text-2xl font-bold font-serif mb-6 text-gray-900">Perguntas Frequentes</h3>
-               <div className="space-y-4">
+               <div className="space-y-3">
                  {FAQS.map((faq, idx) => (
-                   <div key={idx} className="border border-gray-200 rounded-lg p-4 bg-white">
-                     <h4 className="font-bold text-aba-blue mb-2 flex items-start">
-                       <MessageCircle className="h-5 w-5 mr-2 mt-1 shrink-0 opacity-70" />
-                       {faq.question}
-                     </h4>
-                     <p className="text-gray-600 text-sm ml-7">{faq.answer}</p>
-                   </div>
+                   <FaqItem key={idx} question={faq.question} answer={faq.answer} />
                  ))}
                </div>
              </div>
