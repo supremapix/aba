@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SectionTitle from '../components/SectionTitle';
 import Button from '../components/Button';
 import { CONTACT_INFO, FAQS, WHATSAPP_URL } from '../constants';
-import { MapPin, Phone, Mail, MessageCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { MapPin, Phone, Mail, MessageCircle, ChevronDown, ChevronUp, Send } from 'lucide-react';
 
 const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +36,33 @@ const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, ans
 };
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Format message for WhatsApp
+    const text = `*Contato via Site ABA*\n\n*Nome:* ${formData.name}\n*Email:* ${formData.email}\n*Assunto:* ${formData.subject}\n\n*Mensagem:*\n${formData.message}`;
+    
+    // Use the specific number provided in the prompt logic
+    const whatsappUrl = `https://wa.me/5551998147660?text=${encodeURIComponent(text)}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -74,15 +101,50 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            <form className="space-y-4 bg-gray-50 p-6 rounded-lg shadow-sm" onSubmit={(e) => e.preventDefault()}>
-              <h3 className="font-bold text-lg mb-2">Envie uma mensagem</h3>
+            <form className="space-y-4 bg-gray-50 p-6 rounded-lg shadow-sm" onSubmit={handleSubmit}>
+              <h3 className="font-bold text-lg mb-2">Envie uma mensagem via WhatsApp</h3>
               <div className="grid grid-cols-2 gap-4">
-                <input type="text" placeholder="Nome" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aba-blue focus:outline-none" />
-                <input type="email" placeholder="E-mail" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aba-blue focus:outline-none" />
+                <input 
+                  type="text" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Nome" 
+                  required
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aba-blue focus:outline-none" 
+                />
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="E-mail" 
+                  required
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aba-blue focus:outline-none" 
+                />
               </div>
-              <input type="text" placeholder="Assunto" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aba-blue focus:outline-none" />
-              <textarea placeholder="Sua mensagem" rows={4} className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aba-blue focus:outline-none"></textarea>
-              <Button type="submit" fullWidth>Enviar Mensagem</Button>
+              <input 
+                type="text" 
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                placeholder="Assunto" 
+                required
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aba-blue focus:outline-none" 
+              />
+              <textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Sua mensagem" 
+                rows={4} 
+                required
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-aba-blue focus:outline-none"
+              ></textarea>
+              <Button type="submit" fullWidth>
+                <Send className="w-4 h-4 mr-2" />
+                Enviar Mensagem
+              </Button>
             </form>
           </div>
 

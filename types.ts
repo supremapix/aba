@@ -26,6 +26,7 @@ export interface BlogPost {
   date: string;
   image: string;
   category: string;
+  content: string; // Added field for full article content
 }
 
 export interface TeamMember {
