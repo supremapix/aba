@@ -1,3 +1,4 @@
+
 import React from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { CheckCircle, Clock, Book, Briefcase, Smile, Key, Users, TrendingUp } from 'lucide-react';
@@ -64,8 +65,8 @@ const Project: React.FC = () => {
             <div className="relative">
               <div className="absolute top-0 right-0 -mr-4 -mt-4 w-72 h-72 bg-aba-orange/20 rounded-full blur-3xl"></div>
               <div className="grid grid-cols-2 gap-4">
-                  <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?auto=format&fit=crop&q=80&w=400" alt="Jovens cozinhando juntos aprendendo autonomia" className="rounded-lg shadow-xl mb-8 transform translate-y-4" />
-                  <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=400" alt="Jovem estudando focado" className="rounded-lg shadow-xl mt-8 transform -translate-y-4" />
+                  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=400" alt="Jovens cozinhando juntos aprendendo autonomia" className="rounded-lg shadow-xl mb-8 transform translate-y-4 object-cover h-64 w-full" />
+                  <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=400" alt="Jovem estudando focado" className="rounded-lg shadow-xl mt-8 transform -translate-y-4 object-cover h-64 w-full" />
               </div>
             </div>
           </div>
