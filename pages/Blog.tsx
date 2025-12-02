@@ -10,7 +10,7 @@ const SAMPLE_POSTS: BlogPost[] = [
     excerpt: "Graças ao apoio dos nossos parceiros, conseguimos abrir mais 6 vagas para jovens mulheres.",
     date: "15 Out, 2023",
     category: "Conquistas",
-    image: "https://picsum.photos/seed/blog1/600/400"
+    image: "https://images.unsplash.com/photo-1560523160-754a9e25c68f?auto=format&fit=crop&q=80&w=600"
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const SAMPLE_POSTS: BlogPost[] = [
     excerpt: "Voluntários de RH realizaram simulações de entrevista com nossos jovens no último sábado.",
     date: "02 Set, 2023",
     category: "Atividades",
-    image: "https://picsum.photos/seed/blog2/600/400"
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600"
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const SAMPLE_POSTS: BlogPost[] = [
     excerpt: "Confira onde cada centavo da sua doação foi investido nos primeiros seis meses do ano.",
     date: "20 Ago, 2023",
     category: "Transparência",
-    image: "https://picsum.photos/seed/blog3/600/400"
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600"
   }
 ];
 

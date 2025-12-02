@@ -13,8 +13,8 @@ const Home: React.FC = () => {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://picsum.photos/seed/youth_hope/1920/1080" 
-            alt="Jovens da ABA sorrindo e olhando para o horizonte" 
+            src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&q=80&w=1920" 
+            alt="Grupo diverso de jovens abraçados e sorrindo, representando união e futuro" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-aba-darkBlue/90 via-aba-blue/80 to-aba-orange/30 mix-blend-multiply"></div>
@@ -75,8 +75,8 @@ const Home: React.FC = () => {
             <div className="lg:w-1/2 relative">
               <div className="absolute top-4 left-4 w-full h-full border-2 border-aba-orange rounded-lg transform translate-x-4 translate-y-4"></div>
               <img 
-                src="https://picsum.photos/seed/house_home/800/600" 
-                alt="Fachada da Casa República Barnabé" 
+                src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&q=80&w=800" 
+                alt="Grupo de jovens e mentores em roda de conversa na casa" 
                 className="relative rounded-lg shadow-2xl z-10 w-full object-cover"
               />
               <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-lg shadow-xl max-w-xs z-20 hidden lg:block border-l-4 border-aba-blue">
@@ -128,7 +128,7 @@ const Home: React.FC = () => {
                 </p>
                 <div className="flex items-center space-x-4 border-t border-white/20 pt-4">
                   <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                    <img src="https://picsum.photos/seed/person_lucas/100" alt="Lucas" className="w-full h-full object-cover" />
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100" alt="Lucas" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h4 className="font-bold text-lg">Lucas M.</h4>
@@ -146,7 +146,7 @@ const Home: React.FC = () => {
                 </p>
                 <div className="flex items-center space-x-4 border-t border-white/20 pt-4">
                    <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                    <img src="https://picsum.photos/seed/person_julia/100" alt="Júlia" className="w-full h-full object-cover" />
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Júlia" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h4 className="font-bold text-lg">Júlia S.</h4>
@@ -164,7 +164,7 @@ const Home: React.FC = () => {
                 </p>
                 <div className="flex items-center space-x-4 border-t border-white/20 pt-4">
                    <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                    <img src="https://picsum.photos/seed/person_roberto/100" alt="Roberto" className="w-full h-full object-cover" />
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100" alt="Roberto" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h4 className="font-bold text-lg">Roberto F.</h4>

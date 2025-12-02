@@ -71,7 +71,7 @@ export const FAQS: FaqItem[] = [
 ];
 
 export const TEAM: TeamMember[] = [
-  { name: "Robinson Pereira", role: "Presidente e Fundador", image: "https://picsum.photos/seed/robinson/300/300" },
-  { name: "Ana Silva", role: "Coordenadora Pedagógica", image: "https://picsum.photos/seed/ana/300/300" },
-  { name: "Carlos Santos", role: "Assistente Social", image: "https://picsum.photos/seed/carlos/300/300" },
+  { name: "Robinson Pereira", role: "Presidente e Fundador", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300" },
+  { name: "Ana Silva", role: "Coordenadora Pedagógica", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300" },
+  { name: "Carlos Santos", role: "Assistente Social", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300" },
 ];

@@ -76,19 +76,19 @@ const About: React.FC = () => {
             <div className="md:w-1/2 order-1 md:order-2">
               <div className="grid grid-cols-2 gap-4 relative">
                 <div className="absolute inset-0 bg-aba-orange/10 rounded-full blur-3xl -z-10"></div>
-                {/* Imagens atualizadas para refletir estudo, grupo e apoio, em vez de carros/genéricas */}
+                {/* Imagens atualizadas para refletir mentoria, apoio e juventude */}
                 <img 
-                  src="https://picsum.photos/seed/youth_study_group/400/500" 
+                  src="https://images.unsplash.com/photo-1544642899-f0d6e5f6ed6f?auto=format&fit=crop&q=80&w=400" 
                   className="rounded-lg shadow-xl mt-8 hover:scale-105 transition-transform duration-500 object-cover h-64 w-full" 
-                  alt="Jovens estudando juntos" 
+                  alt="Sessão de mentoria em grupo" 
                 />
                 <img 
-                  src="https://picsum.photos/seed/volunteers_help/400/500" 
+                  src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=400" 
                   className="rounded-lg shadow-xl mb-8 hover:scale-105 transition-transform duration-500 object-cover h-64 w-full" 
-                  alt="Apoio e comunidade" 
+                  alt="Voluntários trabalhando juntos pela causa" 
                 />
               </div>
-              <p className="text-center text-sm text-gray-500 mt-4 italic">Jovens construindo laços e futuro na República.</p>
+              <p className="text-center text-sm text-gray-500 mt-4 italic">Acolhimento e preparação para a vida autônoma.</p>
             </div>
           </div>
         </div>
