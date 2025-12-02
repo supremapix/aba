@@ -5,7 +5,20 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-white pt-16 pb-8">
+    <footer className="bg-slate-900 text-white pt-16 pb-8 relative overflow-hidden">
+      <style>{`
+        @keyframes heartbeat {
+          0%, 100% { transform: scale(1); }
+          25% { transform: scale(1.15); }
+          40% { transform: scale(1); }
+          60% { transform: scale(1.15); }
+        }
+        .heart-beat {
+          display: inline-block;
+          animation: heartbeat 1.5s infinite ease-in-out;
+        }
+      `}</style>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
@@ -50,7 +63,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-aba-orange shrink-0" />
-                <span className="text-gray-400">{CONTACT_INFO.phone}</span>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">{CONTACT_INFO.phone}</a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-aba-orange shrink-0" />
@@ -70,8 +83,22 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Associação Barnabé (ABA). Todos os direitos reservados.</p>
+        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
+          <p className="text-center md:text-left">&copy; {new Date().getFullYear()} Associação Barnabé (ABA). Todos os direitos reservados.</p>
+          
+          <div className="flex items-center space-x-1.5 bg-gray-800/50 px-4 py-2 rounded-full backdrop-blur-sm hover:bg-gray-800 transition-colors">
+            <span>Desenvolvido com</span>
+            <span className="heart-beat text-red-500 text-base" role="img" aria-label="coração">❤️</span>
+            <span>pela</span>
+            <a 
+              href="https://www.supremasite.com.br/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-gray-300 hover:text-white hover:underline transition-colors font-semibold ml-0.5"
+            >
+              Suprema Sites Express
+            </a>
+          </div>
         </div>
       </div>
     </footer>
