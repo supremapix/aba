@@ -6,7 +6,7 @@ export const WHATSAPP_URL = "https://wa.me/5551998147660?text=Ol%C3%A1%20vi%20se
 export const CONTACT_INFO = {
   address: "Av. Brasil, 330 - Bairro Barnabé, Gravataí/RS - CEP: 94150-000",
   phone: "(51) 99814-7660",
-  email: "contato@associacaobarnabe.org.br", // Placeholder
+  email: "contato@associacaobarnabe.org",
   cnpj: "29.748.275/0001-90",
   instagram: "@ASSOCIAÇÃO BARNABÉ ABA",
   facebook: "Associação Barnabé"
