@@ -1,10 +1,15 @@
 import React from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { FileText, Download, BarChart2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Transparency: React.FC = () => {
   return (
     <div className="pt-20">
+      <SEO 
+        title="Transparência e Prestação de Contas" 
+        description="Acesse os relatórios financeiros, balanços e documentos oficiais da Associação Barnabé. Compromisso com a ética e clareza."
+      />
       <div className="bg-aba-blue py-12 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl font-bold font-serif mb-2">Transparência</h1>

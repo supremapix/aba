@@ -3,6 +3,7 @@ import SectionTitle from '../components/SectionTitle';
 import Button from '../components/Button';
 import { BlogPost } from '../types';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const SAMPLE_POSTS: BlogPost[] = [
   {
@@ -89,8 +90,28 @@ const Blog: React.FC = () => {
 
   // DETAIL VIEW
   if (selectedPost) {
+    const postSchema = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": selectedPost.title,
+      "image": selectedPost.image,
+      "datePublished": selectedPost.date, // Note: In real app, format to ISO 8601
+      "author": {
+        "@type": "Organization",
+        "name": "Associação Barnabé"
+      },
+      "articleBody": selectedPost.content.replace(/<[^>]+>/g, '') // Strip tags for schema
+    };
+
     return (
       <div className="pt-20">
+        <SEO 
+          title={selectedPost.title} 
+          description={selectedPost.excerpt}
+          image={selectedPost.image}
+          schema={postSchema}
+          type="article"
+        />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <button 
             onClick={handleBack}
@@ -167,6 +188,10 @@ const Blog: React.FC = () => {
   // LIST VIEW
   return (
     <div className="pt-20">
+      <SEO 
+        title="Blog e Notícias" 
+        description="Fique por dentro das novidades, eventos e prestação de contas da Associação Barnabé."
+      />
       <div className="bg-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Notícias e Atualizações" subtitle="Blog da ABA" centered={false} />
@@ -190,6 +215,7 @@ const Blog: React.FC = () => {
                     src={post.image} 
                     alt={post.title} 
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" 
+                    loading="lazy"
                   />
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-aba-blue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
                     {post.category}

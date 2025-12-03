@@ -2,27 +2,35 @@ import React from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { TEAM } from '../constants';
 import { Target, Eye, Heart, Users, Award } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const About: React.FC = () => {
   return (
     <div className="pt-20">
+      <SEO 
+        title="Sobre Nós - Nossa História e Missão" 
+        description="Conheça a história da Associação Barnabé, nossa missão de acolher jovens egressos de abrigos, nossos valores e a equipe que faz a diferença."
+      />
+      
       {/* Header */}
-      <div className="bg-gray-100 py-16">
+      <header className="bg-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-aba-blue font-serif mb-6">Sobre a ABA</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Mais do que um teto, somos uma família de transição. A Associação Barnabé existe para garantir que nenhum jovem tenha que enfrentar o mundo sozinho ao completar 18 anos.
           </p>
         </div>
-      </div>
+      </header>
 
       {/* Mission/Vision/Values */}
-      <section className="py-16 relative overflow-hidden">
+      <section className="py-16 relative overflow-hidden" aria-labelledby="pilares-title">
         <div className="absolute top-0 left-0 w-full h-full bg-aba-blue/5 -z-10 transform -skew-y-3"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle title="Nossos Pilares" subtitle="Identidade" />
+          <div id="pilares-title">
+            <SectionTitle title="Nossos Pilares" subtitle="Identidade Organizacional" />
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-aba-blue text-center group hover:transform hover:-translate-y-2 transition-all">
+            <article className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-aba-blue text-center group hover:transform hover:-translate-y-2 transition-all">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-aba-blue group-hover:bg-aba-blue group-hover:text-white transition-colors">
                 <Target className="h-8 w-8" />
               </div>
@@ -30,9 +38,9 @@ const About: React.FC = () => {
               <p className="text-gray-600 text-sm leading-relaxed">
                 Acolher integralmente jovens egressos de abrigos institucionais, oferecendo moradia, afeto, qualificação profissional e suporte psicossocial para que construam sua autonomia com dignidade e segurança.
               </p>
-            </div>
+            </article>
             
-            <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-aba-orange text-center group hover:transform hover:-translate-y-2 transition-all">
+            <article className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-aba-orange text-center group hover:transform hover:-translate-y-2 transition-all">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 text-aba-orange group-hover:bg-aba-orange group-hover:text-white transition-colors">
                 <Eye className="h-8 w-8" />
               </div>
@@ -40,9 +48,9 @@ const About: React.FC = () => {
               <p className="text-gray-600 text-sm leading-relaxed">
                 Ser referência nacional em tecnologia social de acolhimento para jovens adultos, erradicando a situação de rua para egressos do sistema de proteção e formando cidadãos plenos e realizados.
               </p>
-            </div>
+            </article>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-aba-green text-center group hover:transform hover:-translate-y-2 transition-all">
+            <article className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-aba-green text-center group hover:transform hover:-translate-y-2 transition-all">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-aba-green group-hover:bg-aba-green group-hover:text-white transition-colors">
                 <Heart className="h-8 w-8" />
               </div>
@@ -50,7 +58,7 @@ const About: React.FC = () => {
               <p className="text-gray-600 text-sm leading-relaxed">
                 Amor incondicional, Ética inegociável, Transparência financeira, Respeito à história individual, Excelência no cuidado e Fé na transformação humana.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -61,7 +69,7 @@ const About: React.FC = () => {
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="md:w-1/2 order-2 md:order-1">
               <SectionTitle title="Nossa Trajetória" subtitle="Como Tudo Começou" centered={false} />
-              <div className="space-y-6 text-gray-600 leading-relaxed text-lg text-justify">
+              <article className="space-y-6 text-gray-600 leading-relaxed text-lg text-justify">
                 <p>
                   A história da <strong>Associação Barnabé (ABA)</strong> começou ao identificarmos uma falha cruel no sistema de proteção brasileiro: o "abismo dos 18 anos". Crianças e adolescentes protegidos pelo Estado em abrigos, ao atingirem a maioridade, eram frequentemente desligados sem qualquer preparação, rede de apoio ou lugar para ir.
                 </p>
@@ -71,21 +79,22 @@ const About: React.FC = () => {
                 <p>
                   Fundada por um grupo de voluntários movidos pela empatia e senso de justiça, a ABA nasceu pequena, alugando uma casa simples para acolher os primeiros jovens. Com o tempo, desenvolvemos uma metodologia própria, focada não apenas em dar teto, mas em ensinar a viver. Hoje, somos uma ponte sólida entre o passado institucional e um futuro de liberdade e conquistas.
                 </p>
-              </div>
+              </article>
             </div>
             <div className="md:w-1/2 order-1 md:order-2">
               <div className="grid grid-cols-2 gap-4 relative">
                 <div className="absolute inset-0 bg-aba-orange/10 rounded-full blur-3xl -z-10"></div>
-                {/* Imagens atualizadas para refletir mentoria, apoio e juventude */}
                 <img 
                   src="https://images.unsplash.com/photo-1544642899-f0d6e5f6ed6f?auto=format&fit=crop&q=80&w=400" 
                   className="rounded-lg shadow-xl mt-8 hover:scale-105 transition-transform duration-500 object-cover h-64 w-full" 
-                  alt="Sessão de mentoria em grupo" 
+                  alt="Sessão de mentoria em grupo com jovens da ONG" 
+                  loading="lazy"
                 />
                 <img 
                   src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=400" 
                   className="rounded-lg shadow-xl mb-8 hover:scale-105 transition-transform duration-500 object-cover h-64 w-full" 
-                  alt="Voluntários trabalhando juntos pela causa" 
+                  alt="Voluntários da Associação Barnabé trabalhando juntos" 
+                  loading="lazy"
                 />
               </div>
               <p className="text-center text-sm text-gray-500 mt-4 italic">Acolhimento e preparação para a vida autônoma.</p>
@@ -95,7 +104,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Impact Numbers Detailed */}
-      <section className="py-16 bg-aba-darkBlue text-white">
+      <section className="py-16 bg-aba-darkBlue text-white" aria-label="Estatísticas detalhadas">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold font-serif mb-12">O Impacto do Nosso Trabalho</h2>
           <div className="grid md:grid-cols-4 gap-8">
@@ -134,7 +143,7 @@ const About: React.FC = () => {
             {TEAM.map((member, idx) => (
               <div key={idx} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center group border border-gray-100">
                 <div className="relative w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-100 group-hover:border-aba-blue transition-colors">
-                  <img src={member.image} alt={member.name} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+                  <img src={member.image} alt={member.name} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" loading="lazy" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
                 <p className="text-aba-blue font-medium mb-3">{member.role}</p>

@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import Button from '../components/Button';
 import { Heart, Lock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const DonorArea: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
     <div className="pt-20 min-h-screen bg-gray-50 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <SEO 
+        title={isLogin ? "Área do Doador - Login" : "Cadastro de Doador"} 
+        description="Acesse a área restrita para doadores da Associação Barnabé. Visualize seus recibos e relatórios exclusivos."
+      />
       <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-2xl">
         <div className="text-center">
           <div className="mx-auto h-16 w-16 bg-blue-50 rounded-full flex items-center justify-center text-aba-blue mb-4">

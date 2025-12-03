@@ -3,6 +3,7 @@ import SectionTitle from '../components/SectionTitle';
 import { DONATION_PLANS, CONTACT_INFO } from '../constants';
 import Button from '../components/Button';
 import { Check, Copy, Heart, Hand, Building, Coffee, BookOpen, Lightbulb } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Donate: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -14,8 +15,32 @@ const Donate: React.FC = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const donateSchema = {
+    "@context": "https://schema.org",
+    "@type": "DonateAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://associacaobarnabe.org/doar",
+      "inLanguage": "pt-BR",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform"
+      ]
+    },
+    "agent": {
+      "@type": "Organization",
+      "name": "Associação Barnabé"
+    },
+    "description": "Doe para a Associação Barnabé e ajude jovens a terem um futuro digno."
+  };
+
   return (
     <div className="pt-20">
+      <SEO 
+        title="Como Ajudar - Doação e Voluntariado" 
+        description="Saiba como doar para a Associação Barnabé. Seja um padrinho, faça uma doação via PIX, direcione seu Imposto de Renda ou seja voluntário."
+        schema={donateSchema}
+      />
       <div className="bg-aba-orange py-20 text-white relative overflow-hidden">
          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -51,7 +76,7 @@ const Donate: React.FC = () => {
       </section>
 
       {/* Plans Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50" aria-label="Planos de Apadrinhamento">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle title="Seja um Padrinho Mensal" subtitle="Continuidade" />
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -95,7 +120,7 @@ const Donate: React.FC = () => {
       </section>
 
       {/* One-off Donation (PIX) */}
-      <section className="py-16">
+      <section className="py-16" aria-label="Doação via PIX">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
             <div className="grid md:grid-cols-2">
@@ -112,7 +137,7 @@ const Donate: React.FC = () => {
                     <button 
                       onClick={copyPix}
                       className="p-3 bg-white/20 hover:bg-white/30 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium"
-                      title="Copiar Chave"
+                      title="Copiar Chave PIX"
                     >
                       {copied ? <><Check className="h-4 w-4" /> Copiado</> : <><Copy className="h-4 w-4" /> Copiar</>}
                     </button>
