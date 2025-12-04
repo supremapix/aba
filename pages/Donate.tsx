@@ -144,7 +144,7 @@ const Donate: React.FC = () => {
                   </div>
                 </div>
                 <div className="mt-6 text-sm text-blue-200 opacity-80">
-                  <p>Banco: Banrisul (041)</p>
+                  <p>Banco: C6 Bank</p>
                   <p>Agência: 0100 | Conta Corrente: 12.345-6</p>
                   <p>Favorecido: Associação Barnabé</p>
                 </div>
