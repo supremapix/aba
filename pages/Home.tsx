@@ -46,38 +46,38 @@ const Home: React.FC = () => {
           <img 
             src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&q=80&w=1920" 
             alt="Grupo diverso de jovens abraçados e sorrindo, representando a união da juventude" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover animate-slow-zoom"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-aba-darkBlue/90 via-aba-blue/80 to-aba-orange/30 mix-blend-multiply"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-block bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm font-semibold mb-6 animate-fade-in-up">
+          <div className="inline-block bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm font-semibold mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
             CNPJ: {CONTACT_INFO.cnpj}
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight drop-shadow-lg opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             Preparando jovens <br />
-            <span className="text-aba-orange">para voar alto</span>
+            <span className="text-aba-orange inline-block">para voar alto</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-100 mb-10 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md">
+          <p className="text-xl md:text-2xl text-gray-100 mb-10 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
             Oferecemos um lar seguro, afeto e oportunidades reais para jovens que completam 18 anos e precisam sair dos abrigos institucionais.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
             <Link to="/doar">
-              <Button size="lg" variant="secondary" className="shadow-orange-900/50">
-                <Heart className="mr-2 h-5 w-5" /> Seja um Padrinho
+              <Button size="lg" variant="secondary" className="shadow-orange-900/50 hover:scale-105 transition-transform duration-300">
+                <Heart className="mr-2 h-5 w-5 animate-pulse" /> Seja um Padrinho
               </Button>
             </Link>
             <Link to="/projeto">
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-aba-blue bg-white/10 backdrop-blur-sm">
+              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-aba-blue bg-white/10 backdrop-blur-sm hover:scale-105 transition-transform duration-300">
                 Conheça o Projeto
               </Button>
             </Link>
           </div>
         </div>
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
-          <ChevronRight className="h-8 w-8 rotate-90" />
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float text-white/70">
+          <ChevronRight className="h-10 w-10 rotate-90" />
         </div>
       </section>
 
@@ -86,8 +86,8 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-x divide-gray-100">
             {STATS.map((stat, index) => (
-              <div key={index} className="text-center p-4 hover:bg-gray-50 transition-colors rounded-lg">
-                <div className="inline-flex items-center justify-center p-3 bg-blue-50 rounded-full text-aba-blue mb-4 shadow-sm">
+              <div key={index} className="text-center p-4 hover:bg-gray-50 transition-all duration-300 rounded-lg group hover:-translate-y-1">
+                <div className="inline-flex items-center justify-center p-3 bg-blue-50 rounded-full text-aba-blue mb-4 shadow-sm group-hover:bg-aba-blue group-hover:text-white transition-colors duration-300">
                   <stat.icon className="h-8 w-8" />
                 </div>
                 <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
@@ -102,15 +102,15 @@ const Home: React.FC = () => {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2 relative">
-              <div className="absolute top-4 left-4 w-full h-full border-2 border-aba-orange rounded-lg transform translate-x-4 translate-y-4"></div>
+            <div className="lg:w-1/2 relative group">
+              <div className="absolute top-4 left-4 w-full h-full border-2 border-aba-orange rounded-lg transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6"></div>
               <img 
                 src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&q=80&w=800" 
                 alt="Roda de conversa de acolhimento com jovens e voluntários da ABA" 
-                className="relative rounded-lg shadow-2xl z-10 w-full object-cover"
+                className="relative rounded-lg shadow-2xl z-10 w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 loading="lazy"
               />
-              <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-lg shadow-xl max-w-xs z-20 hidden lg:block border-l-4 border-aba-blue">
+              <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-lg shadow-xl max-w-xs z-20 hidden lg:block border-l-4 border-aba-blue transition-transform duration-500 hover:-translate-y-2">
                 <p className="font-serif italic text-gray-600 text-lg">"Aqui eu descobri que não sou um número, sou uma pessoa com sonhos."</p>
                 <p className="text-sm font-bold text-aba-blue mt-4 text-right">— Jovem Acolhido</p>
               </div>
@@ -132,10 +132,10 @@ const Home: React.FC = () => {
               </article>
               <div className="flex gap-4">
                 <Link to="/sobre">
-                  <Button variant="primary">Nossa História</Button>
+                  <Button variant="primary" className="hover:scale-105">Nossa História</Button>
                 </Link>
                 <Link to="/transparencia">
-                   <Button variant="outline">Ver Transparência</Button>
+                   <Button variant="outline" className="hover:scale-105">Ver Transparência</Button>
                 </Link>
               </div>
             </div>
@@ -145,14 +145,14 @@ const Home: React.FC = () => {
 
       {/* Testimonials */}
       <section className="py-24 bg-aba-blue text-white relative overflow-hidden" aria-label="Depoimentos">
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-aba-orange/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-aba-orange/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionTitle title="Vidas Transformadas" subtitle="Depoimentos Reais" light />
           
           <div className="grid md:grid-cols-3 gap-8 mt-16">
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-colors">
+            <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
                 <div className="flex space-x-1 text-aba-orange mb-6">
                   {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
                 </div>
@@ -170,7 +170,7 @@ const Home: React.FC = () => {
                 </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-colors transform md:-translate-y-4 shadow-xl">
+            <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform md:-translate-y-4 shadow-xl hover:-translate-y-6 hover:shadow-2xl">
                 <div className="flex space-x-1 text-aba-orange mb-6">
                   {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
                 </div>
@@ -188,7 +188,7 @@ const Home: React.FC = () => {
                 </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-colors">
+            <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
                 <div className="flex space-x-1 text-aba-orange mb-6">
                   {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
                 </div>
@@ -213,17 +213,17 @@ const Home: React.FC = () => {
       <section className="py-20 bg-aba-orange relative overflow-hidden" aria-label="Seja Parceiro">
         <div className="absolute inset-0 bg-pattern opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <Shield className="h-16 w-16 text-white/80 mx-auto mb-6" />
+          <Shield className="h-16 w-16 text-white/80 mx-auto mb-6 animate-float" />
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Sua empresa pode transformar o futuro</h2>
           <p className="text-white/90 text-xl mb-10 max-w-3xl mx-auto font-medium">
             O selo de <strong>Empresa Amiga da ABA</strong> mostra ao mercado que seu negócio se importa. Invista em responsabilidade social com impacto local, mensurável e transparente.
           </p>
           <div className="flex justify-center gap-4 flex-col sm:flex-row">
             <Link to="/contato">
-              <Button variant="white" size="lg" className="shadow-lg">Falar com Parcerias</Button>
+              <Button variant="white" size="lg" className="shadow-lg hover:scale-105 transition-transform">Falar com Parcerias</Button>
             </Link>
             <Link to="/doar">
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 hover:text-white">Baixar Apresentação</Button>
+              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 hover:text-white hover:scale-105 transition-transform">Baixar Apresentação</Button>
             </Link>
           </div>
         </div>
