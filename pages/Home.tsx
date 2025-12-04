@@ -1,10 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Star, Heart, Shield } from 'lucide-react';
+import { ChevronRight, Star, Heart, Shield, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import Button from '../components/Button';
 import SectionTitle from '../components/SectionTitle';
-import { STATS, CONTACT_INFO } from '../constants';
+import { STATS, CONTACT_INFO, FAQS } from '../constants';
 import SEO from '../components/SEO';
+import ScrollAnimation from '../components/ScrollAnimation';
+
+// Simple accordion item component for the FAQ section
+const FaqAccordionItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  return (
+    <div className="border-b border-gray-200 last:border-0">
+      <button 
+        className="w-full py-4 flex justify-between items-center text-left focus:outline-none"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="text-lg font-medium text-gray-800">{question}</span>
+        {isOpen ? <ChevronUp className="text-aba-orange" /> : <ChevronDown className="text-gray-400" />}
+      </button>
+      <div 
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0'}`}
+      >
+        <p className="text-gray-600 leading-relaxed">{answer}</p>
+      </div>
+    </div>
+  );
+};
 
 const Home: React.FC = () => {
   const orgSchema = {
@@ -64,12 +86,12 @@ const Home: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
             <Link to="/doar">
-              <Button size="lg" variant="secondary" className="shadow-orange-900/50 hover:scale-105 transition-transform duration-300">
+              <Button size="lg" variant="secondary" className="shadow-orange-900/50">
                 <Heart className="mr-2 h-5 w-5 animate-pulse" /> Seja um Padrinho
               </Button>
             </Link>
             <Link to="/projeto">
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-aba-blue bg-white/10 backdrop-blur-sm hover:scale-105 transition-transform duration-300">
+              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-aba-blue bg-white/10 backdrop-blur-sm">
                 Conheça o Projeto
               </Button>
             </Link>
@@ -86,13 +108,15 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-x divide-gray-100">
             {STATS.map((stat, index) => (
-              <div key={index} className="text-center p-4 hover:bg-gray-50 transition-all duration-300 rounded-lg group hover:-translate-y-1">
-                <div className="inline-flex items-center justify-center p-3 bg-blue-50 rounded-full text-aba-blue mb-4 shadow-sm group-hover:bg-aba-blue group-hover:text-white transition-colors duration-300">
-                  <stat.icon className="h-8 w-8" />
+              <ScrollAnimation key={index} delay={index * 100}>
+                <div className="text-center p-4 hover:bg-gray-50 transition-all duration-300 rounded-lg group hover:-translate-y-1">
+                  <div className="inline-flex items-center justify-center p-3 bg-blue-50 rounded-full text-aba-blue mb-4 shadow-sm group-hover:bg-aba-blue group-hover:text-white transition-colors duration-300">
+                    <stat.icon className="h-8 w-8" />
+                  </div>
+                  <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
+                  <div className="text-gray-600 font-medium uppercase tracking-wide text-sm">{stat.label}</div>
                 </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                <div className="text-gray-600 font-medium uppercase tracking-wide text-sm">{stat.label}</div>
-              </div>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
@@ -103,43 +127,67 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 relative group">
-              <div className="absolute top-4 left-4 w-full h-full border-2 border-aba-orange rounded-lg transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&q=80&w=800" 
-                alt="Roda de conversa de acolhimento com jovens e voluntários da ABA" 
-                className="relative rounded-lg shadow-2xl z-10 w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                loading="lazy"
-              />
-              <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-lg shadow-xl max-w-xs z-20 hidden lg:block border-l-4 border-aba-blue transition-transform duration-500 hover:-translate-y-2">
-                <p className="font-serif italic text-gray-600 text-lg">"Aqui eu descobri que não sou um número, sou uma pessoa com sonhos."</p>
-                <p className="text-sm font-bold text-aba-blue mt-4 text-right">— Jovem Acolhido</p>
-              </div>
+              <ScrollAnimation animation="slide-in-left">
+                <div className="absolute top-4 left-4 w-full h-full border-2 border-aba-orange rounded-lg transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&q=80&w=800" 
+                  alt="Roda de conversa de acolhimento com jovens e voluntários da ABA" 
+                  className="relative rounded-lg shadow-2xl z-10 w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+                <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-lg shadow-xl max-w-xs z-20 hidden lg:block border-l-4 border-aba-blue transition-transform duration-500 hover:-translate-y-2">
+                  <p className="font-serif italic text-gray-600 text-lg">"Aqui eu descobri que não sou um número, sou uma pessoa com sonhos."</p>
+                  <p className="text-sm font-bold text-aba-blue mt-4 text-right">— Jovem Acolhido</p>
+                </div>
+              </ScrollAnimation>
             </div>
             <div className="lg:w-1/2">
-              <div className="inline-block px-3 py-1 bg-blue-100 text-aba-blue rounded-full text-sm font-semibold mb-4">Desde 2018</div>
-              <SectionTitle 
-                title="Muito mais que uma casa" 
-                subtitle="Quem Somos" 
-                centered={false} 
-              />
-              <article className="text-gray-600 text-lg mb-6 leading-relaxed text-justify">
-                <p className="mb-4">
-                  Imagine completar 18 anos e não ter para onde ir. Essa é a realidade de milhares de jovens que cresceram em abrigos. A <strong>Associação Barnabé (ABA)</strong> nasce para preencher esse vazio.
-                </p>
-                <p className="mb-8">
-                  Nosso projeto "República para Jovens" oferece uma <strong>família de transição</strong>. Em nossas casas em Gravataí, eles encontram segurança alimentar, suporte emocional e orientação profissional. Não damos apenas o peixe, ensinamos a pescar, gerir a renda e construir uma vida digna e autônoma.
-                </p>
-              </article>
-              <div className="flex gap-4">
-                <Link to="/sobre">
-                  <Button variant="primary" className="hover:scale-105">Nossa História</Button>
-                </Link>
-                <Link to="/transparencia">
-                   <Button variant="outline" className="hover:scale-105">Ver Transparência</Button>
-                </Link>
-              </div>
+              <ScrollAnimation animation="slide-in-right" delay={200}>
+                <div className="inline-block px-3 py-1 bg-blue-100 text-aba-blue rounded-full text-sm font-semibold mb-4">Desde 2018</div>
+                <SectionTitle 
+                  title="Muito mais que uma casa" 
+                  subtitle="Quem Somos" 
+                  centered={false} 
+                />
+                <article className="text-gray-600 text-lg mb-6 leading-relaxed text-justify">
+                  <p className="mb-4">
+                    Imagine completar 18 anos e não ter para onde ir. Essa é a realidade de milhares de jovens que cresceram em abrigos. A <strong>Associação Barnabé (ABA)</strong> nasce para preencher esse vazio.
+                  </p>
+                  <p className="mb-8">
+                    Nosso projeto "República para Jovens" oferece uma <strong>família de transição</strong>. Em nossas casas em Gravataí, eles encontram segurança alimentar, suporte emocional e orientação profissional. Não damos apenas o peixe, ensinamos a pescar, gerir a renda e construir uma vida digna e autônoma.
+                  </p>
+                </article>
+                <div className="flex gap-4">
+                  <Link to="/sobre">
+                    <Button variant="primary">Nossa História</Button>
+                  </Link>
+                  <Link to="/transparencia">
+                     <Button variant="outline">Ver Transparência</Button>
+                  </Link>
+                </div>
+              </ScrollAnimation>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white" aria-labelledby="faq-title">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+           <ScrollAnimation>
+             <SectionTitle title="Dúvidas Frequentes" subtitle="FAQ" centered />
+             <div className="mt-12 bg-gray-50 rounded-2xl p-8 shadow-sm">
+               {FAQS.map((faq, index) => (
+                 <FaqAccordionItem key={index} question={faq.question} answer={faq.answer} />
+               ))}
+               <div className="mt-8 text-center">
+                 <p className="text-gray-600 mb-4">Ainda tem dúvidas?</p>
+                 <Link to="/contato">
+                   <Button variant="outline" size="sm">Fale com nossa equipe</Button>
+                 </Link>
+               </div>
+             </div>
+           </ScrollAnimation>
         </div>
       </section>
 
@@ -152,59 +200,65 @@ const Home: React.FC = () => {
           <SectionTitle title="Vidas Transformadas" subtitle="Depoimentos Reais" light />
           
           <div className="grid md:grid-cols-3 gap-8 mt-16">
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                <div className="flex space-x-1 text-aba-orange mb-6">
-                  {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
-                </div>
-                <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed">
-                  "Quando saí do abrigo, me senti perdido e com medo da rua. Na República, encontrei uma família e o apoio para terminar meus estudos. Hoje tenho meu emprego e aluguei meu lar."
-                </blockquote>
-                <div className="flex items-center space-x-4 border-t border-white/20 pt-4">
-                  <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100" alt="Foto de Lucas" className="w-full h-full object-cover" />
+            <ScrollAnimation delay={0}>
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl h-full">
+                  <div className="flex space-x-1 text-aba-orange mb-6">
+                    {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
                   </div>
-                  <div>
-                    <h4 className="font-bold text-lg">Lucas M.</h4>
-                    <p className="text-sm text-blue-200">Ex-morador, 22 anos</p>
+                  <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed">
+                    "Quando saí do abrigo, me senti perdido e com medo da rua. Na República, encontrei uma família e o apoio para terminar meus estudos. Hoje tenho meu emprego e aluguei meu lar."
+                  </blockquote>
+                  <div className="flex items-center space-x-4 border-t border-white/20 pt-4 mt-auto">
+                    <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
+                      <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100" alt="Foto de Lucas" className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg">Lucas M.</h4>
+                      <p className="text-sm text-blue-200">Ex-morador, 22 anos</p>
+                    </div>
                   </div>
-                </div>
-            </div>
+              </div>
+            </ScrollAnimation>
 
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform md:-translate-y-4 shadow-xl hover:-translate-y-6 hover:shadow-2xl">
-                <div className="flex space-x-1 text-aba-orange mb-6">
-                  {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
-                </div>
-                <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed">
-                  "A ABA acreditou em mim quando ninguém mais acreditava. Aprendi a cozinhar, a cuidar do meu dinheiro e a acreditar no meu potencial. Sou eternamente grata."
-                </blockquote>
-                <div className="flex items-center space-x-4 border-t border-white/20 pt-4">
-                   <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Foto de Júlia" className="w-full h-full object-cover" />
+            <ScrollAnimation delay={200}>
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform md:-translate-y-4 shadow-xl hover:-translate-y-6 hover:shadow-2xl h-full">
+                  <div className="flex space-x-1 text-aba-orange mb-6">
+                    {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
                   </div>
-                  <div>
-                    <h4 className="font-bold text-lg">Júlia S.</h4>
-                    <p className="text-sm text-blue-200">Moradora atual, 19 anos</p>
+                  <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed">
+                    "A ABA acreditou em mim quando ninguém mais acreditava. Aprendi a cozinhar, a cuidar do meu dinheiro e a acreditar no meu potencial. Sou eternamente grata."
+                  </blockquote>
+                  <div className="flex items-center space-x-4 border-t border-white/20 pt-4 mt-auto">
+                     <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
+                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Foto de Júlia" className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg">Júlia S.</h4>
+                      <p className="text-sm text-blue-200">Moradora atual, 19 anos</p>
+                    </div>
                   </div>
-                </div>
-            </div>
+              </div>
+            </ScrollAnimation>
 
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                <div className="flex space-x-1 text-aba-orange mb-6">
-                  {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
-                </div>
-                <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed">
-                  "Como voluntário, vejo de perto a seriedade do trabalho. Cada real doado é investido com responsabilidade para mudar o destino desses jovens."
-                </blockquote>
-                <div className="flex items-center space-x-4 border-t border-white/20 pt-4">
-                   <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100" alt="Foto de Roberto" className="w-full h-full object-cover" />
+            <ScrollAnimation delay={400}>
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl h-full">
+                  <div className="flex space-x-1 text-aba-orange mb-6">
+                    {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
                   </div>
-                  <div>
-                    <h4 className="font-bold text-lg">Roberto F.</h4>
-                    <p className="text-sm text-blue-200">Mantenedor há 3 anos</p>
+                  <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed">
+                    "Como voluntário, vejo de perto a seriedade do trabalho. Cada real doado é investido com responsabilidade para mudar o destino desses jovens."
+                  </blockquote>
+                  <div className="flex items-center space-x-4 border-t border-white/20 pt-4 mt-auto">
+                     <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
+                      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100" alt="Foto de Roberto" className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg">Roberto F.</h4>
+                      <p className="text-sm text-blue-200">Mantenedor há 3 anos</p>
+                    </div>
                   </div>
-                </div>
-            </div>
+              </div>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -220,10 +274,10 @@ const Home: React.FC = () => {
           </p>
           <div className="flex justify-center gap-4 flex-col sm:flex-row">
             <Link to="/contato">
-              <Button variant="white" size="lg" className="shadow-lg hover:scale-105 transition-transform">Falar com Parcerias</Button>
+              <Button variant="white" size="lg">Falar com Parcerias</Button>
             </Link>
             <Link to="/doar">
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 hover:text-white hover:scale-105 transition-transform">Baixar Apresentação</Button>
+              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 hover:text-white">Baixar Apresentação</Button>
             </Link>
           </div>
         </div>
