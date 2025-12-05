@@ -21,12 +21,14 @@ export interface Plan {
 
 export interface BlogPost {
   id: number;
+  slug: string; // SEO friendly URL part
   title: string;
   excerpt: string;
   date: string;
+  isoDate: string; // For Schema.org
   image: string;
   category: string;
-  content: string; // Added field for full article content
+  content: string;
 }
 
 export interface TeamMember {

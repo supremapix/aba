@@ -7,6 +7,7 @@ import About from './pages/About';
 import Project from './pages/Project';
 import Donate from './pages/Donate';
 import Blog from './pages/Blog';
+import BlogPostDetail from './pages/BlogPostDetail'; // Imported new page
 import Transparency from './pages/Transparency';
 import Contact from './pages/Contact';
 import DonorArea from './pages/DonorArea';
@@ -52,6 +53,7 @@ function App() {
             <Route path="/projeto" element={<Project />} />
             <Route path="/doar" element={<Donate />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPostDetail />} />
             <Route path="/transparencia" element={<Transparency />} />
             <Route path="/contato" element={<Contact />} />
             <Route path="/login" element={<DonorArea />} />
