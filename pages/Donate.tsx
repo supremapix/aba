@@ -1,19 +1,49 @@
 import React, { useState } from 'react';
 import SectionTitle from '../components/SectionTitle';
-import { DONATION_PLANS, CONTACT_INFO } from '../constants';
+import { DONATION_PLANS, CONTACT_INFO, WHATSAPP_URL } from '../constants';
 import Button from '../components/Button';
-import { Check, Copy, Heart, Hand, Building, Coffee, BookOpen, Lightbulb } from 'lucide-react';
+import { Check, Copy, Heart, Hand, Building, Coffee, BookOpen, Lightbulb, User, Mail, Phone, Calendar, Briefcase, Star } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollAnimation from '../components/ScrollAnimation';
 
 const Donate: React.FC = () => {
   const [copied, setCopied] = useState(false);
+  
+  // Volunteer Form State
+  const [volunteerForm, setVolunteerForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    area: 'Mentoria Profissional',
+    availability: 'Finais de Semana',
+    skills: ''
+  });
+
   const pixKey = CONTACT_INFO.cnpj; // Using CNPJ as PIX key example
 
   const copyPix = () => {
     navigator.clipboard.writeText(pixKey);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleVolunteerChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setVolunteerForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleVolunteerSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = `*Novo Cadastro de Voluntário ABA* 💙\n\n*Nome:* ${volunteerForm.name}\n*WhatsApp:* ${volunteerForm.phone}\n*Email:* ${volunteerForm.email}\n*Interesse:* ${volunteerForm.area}\n*Disponibilidade:* ${volunteerForm.availability}\n\n*Habilidades/Obs:* ${volunteerForm.skills}`;
+    
+    // Extract number from WHATSAPP_URL constant logic (assuming standard link structure) or use fixed logic
+    // Using the link logic directly to ensure it goes to the right place
+    const waNumber = "5551998147660"; 
+    const whatsappUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const donateSchema = {
@@ -198,7 +228,9 @@ const Donate: React.FC = () => {
                   <p className="text-gray-600 mb-6 leading-relaxed">
                     Doe seu tempo e talento. Precisamos de mentores profissionais, professores de reforço (matemática, português), psicólogos e apoio em eventos beneficentes.
                   </p>
-                  <Button variant="secondary" size="sm">Cadastro de Voluntário</Button>
+                  <a href="#volunteer-form">
+                    <Button variant="secondary" size="sm">Cadastro de Voluntário</Button>
+                  </a>
                 </div>
               </div>
             </ScrollAnimation>
@@ -217,6 +249,137 @@ const Donate: React.FC = () => {
                 </div>
               </div>
             </ScrollAnimation>
+          </div>
+        </div>
+      </section>
+
+      {/* Volunteer Form Section */}
+      <section id="volunteer-form" className="py-20 bg-blue-50 relative">
+        <div className="absolute inset-0 bg-pattern opacity-5" aria-hidden="true"></div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <SectionTitle title="Cadastro de Voluntários" subtitle="Junte-se a Nós" centered />
+          
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mt-10">
+            <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+              Preencha o formulário abaixo para demonstrar seu interesse. Nossa coordenadora de voluntariado entrará em contato via WhatsApp para agendar uma conversa.
+            </p>
+
+            <form onSubmit={handleVolunteerSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="vol_name" className="block text-sm font-bold text-gray-700 mb-2 flex items-center">
+                    <User className="w-4 h-4 mr-1 text-aba-orange" /> Nome Completo
+                  </label>
+                  <input
+                    type="text"
+                    id="vol_name"
+                    name="name"
+                    value={volunteerForm.name}
+                    onChange={handleVolunteerChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all"
+                    placeholder="Seu nome"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="vol_phone" className="block text-sm font-bold text-gray-700 mb-2 flex items-center">
+                    <Phone className="w-4 h-4 mr-1 text-aba-orange" /> WhatsApp
+                  </label>
+                  <input
+                    type="tel"
+                    id="vol_phone"
+                    name="phone"
+                    value={volunteerForm.phone}
+                    onChange={handleVolunteerChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all"
+                    placeholder="(00) 00000-0000"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="vol_email" className="block text-sm font-bold text-gray-700 mb-2 flex items-center">
+                  <Mail className="w-4 h-4 mr-1 text-aba-orange" /> E-mail
+                </label>
+                <input
+                  type="email"
+                  id="vol_email"
+                  name="email"
+                  value={volunteerForm.email}
+                  onChange={handleVolunteerChange}
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all"
+                  placeholder="seu@email.com"
+                />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="vol_area" className="block text-sm font-bold text-gray-700 mb-2 flex items-center">
+                    <Briefcase className="w-4 h-4 mr-1 text-aba-orange" /> Área de Interesse
+                  </label>
+                  <select
+                    id="vol_area"
+                    name="area"
+                    value={volunteerForm.area}
+                    onChange={handleVolunteerChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all bg-white"
+                  >
+                    <option>Mentoria Profissional (RH, Carreira)</option>
+                    <option>Reforço Escolar (Matemática, Português)</option>
+                    <option>Eventos e Ações Sociais</option>
+                    <option>Oficinas (Culinária, Artes, Esportes)</option>
+                    <option>Apoio Administrativo/Comunicação</option>
+                    <option>Manutenção e Obras</option>
+                    <option>Outros</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="vol_availability" className="block text-sm font-bold text-gray-700 mb-2 flex items-center">
+                    <Calendar className="w-4 h-4 mr-1 text-aba-orange" /> Disponibilidade
+                  </label>
+                  <select
+                    id="vol_availability"
+                    name="availability"
+                    value={volunteerForm.availability}
+                    onChange={handleVolunteerChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all bg-white"
+                  >
+                    <option>Semanal (Dias úteis)</option>
+                    <option>Finais de Semana</option>
+                    <option>Quinzenal</option>
+                    <option>Apenas em Eventos Pontuais</option>
+                    <option>Remoto / Online</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="vol_skills" className="block text-sm font-bold text-gray-700 mb-2 flex items-center">
+                  <Star className="w-4 h-4 mr-1 text-aba-orange" /> Habilidades / Observações
+                </label>
+                <textarea
+                  id="vol_skills"
+                  name="skills"
+                  value={volunteerForm.skills}
+                  onChange={handleVolunteerChange}
+                  rows={4}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all"
+                  placeholder="Conte um pouco sobre suas experiências profissionais ou hobbies que gostaria de compartilhar com os jovens..."
+                ></textarea>
+              </div>
+
+              <div className="text-center pt-4">
+                <Button type="submit" size="lg" className="w-full md:w-auto px-12">
+                  <Heart className="w-5 h-5 mr-2 animate-pulse" />
+                  Enviar Cadastro
+                </Button>
+                <p className="text-xs text-gray-500 mt-4">
+                  Seus dados serão enviados diretamente para nossa equipe via WhatsApp.
+                </p>
+              </div>
+            </form>
           </div>
         </div>
       </section>

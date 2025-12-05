@@ -27,6 +27,9 @@ const BlogPostDetail: React.FC = () => {
   const [newCommentName, setNewCommentName] = useState("");
   const [newCommentText, setNewCommentText] = useState("");
 
+  // Share Menu State
+  const [isShareMenuOpen, setIsShareMenuOpen] = useState(false);
+
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -135,7 +138,7 @@ const BlogPostDetail: React.FC = () => {
            </header>
 
            <div className="p-8 md:p-12">
-             <div className="flex flex-wrap items-center text-gray-500 text-sm mb-8 border-b border-gray-100 pb-8 gap-6">
+             <div className="flex flex-wrap items-center text-gray-500 text-sm mb-8 border-b border-gray-100 pb-8 gap-6 relative">
                <div className="flex items-center">
                   <Calendar className="h-4 w-4 mr-2" />
                   <time dateTime={post.isoDate} itemProp="datePublished">{post.date}</time>
@@ -148,6 +151,53 @@ const BlogPostDetail: React.FC = () => {
                   <Clock className="h-4 w-4 mr-2" />
                   3 min de leitura
                </div>
+
+               {/* Interactive Share Button Dropdown */}
+               <div className="ml-auto relative">
+                  <button
+                    onClick={() => setIsShareMenuOpen(!isShareMenuOpen)}
+                    className="flex items-center space-x-2 text-aba-blue font-bold hover:bg-blue-50 px-3 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-aba-blue focus:ring-opacity-50"
+                    aria-label="Opções de compartilhamento"
+                    aria-expanded={isShareMenuOpen}
+                  >
+                    <Share2 className="h-5 w-5" />
+                    <span className="hidden sm:inline">Compartilhar</span>
+                  </button>
+                  
+                  {isShareMenuOpen && (
+                    <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-100 z-20 overflow-hidden animate-fade-in-up origin-top-right">
+                      <div className="py-2">
+                        <a 
+                           href={shareLinks.facebook} 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           className="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-[#1877F2] transition-colors"
+                           onClick={() => setIsShareMenuOpen(false)}
+                        >
+                          <Facebook className="h-4 w-4 mr-3" /> Facebook
+                        </a>
+                        <a 
+                           href={shareLinks.twitter} 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           className="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-[#1DA1F2] transition-colors"
+                           onClick={() => setIsShareMenuOpen(false)}
+                        >
+                          <Twitter className="h-4 w-4 mr-3" /> Twitter
+                        </a>
+                        <a 
+                           href={shareLinks.linkedin} 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           className="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-[#0A66C2] transition-colors"
+                           onClick={() => setIsShareMenuOpen(false)}
+                        >
+                          <Linkedin className="h-4 w-4 mr-3" /> LinkedIn
+                        </a>
+                      </div>
+                    </div>
+                  )}
+               </div>
              </div>
 
              <ScrollAnimation>
@@ -158,7 +208,7 @@ const BlogPostDetail: React.FC = () => {
                />
              </ScrollAnimation>
 
-             {/* Social Sharing Section */}
+             {/* Static Social Sharing Section (Footer) */}
              <div className="mt-12 pt-8 border-t border-gray-100">
                 <h4 className="font-bold text-gray-900 mb-4 flex items-center">
                   <Share2 className="h-5 w-5 mr-2 text-aba-orange" />
