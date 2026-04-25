@@ -7,6 +7,7 @@ import { AreaInfo } from '../types';
 import Button from '../components/Button';
 import SEO from '../components/SEO';
 import SectionTitle from '../components/SectionTitle';
+import { Logo } from '../components/Logo';
 
 const LocationDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -48,11 +49,12 @@ const LocationDetail: React.FC = () => {
           />
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center gap-12">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="flex-1"
           >
             <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm font-semibold mb-6 border border-white/10">
               <MapPin className="w-4 h-4" />
@@ -73,6 +75,18 @@ const LocationDetail: React.FC = () => {
                 <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-aba-blue">Fale Conosco</Button>
               </a>
             </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1, type: "spring" }}
+            whileHover={{ rotate: 5, scale: 1.05 }}
+            className="hidden lg:block"
+          >
+             <div className="p-8 bg-white rounded-[3rem] shadow-2xl border border-gray-100">
+                <Logo size="xl" showText={false} />
+             </div>
           </motion.div>
         </div>
 

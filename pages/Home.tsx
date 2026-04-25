@@ -8,6 +8,7 @@ import InfiniteMarquee from '../components/InfiniteMarquee';
 import { STATS, CONTACT_INFO, FAQS, BAIRROS, CIDADES } from '../constants';
 import SEO from '../components/SEO';
 import ScrollAnimation from '../components/ScrollAnimation';
+import { Logo } from '../components/Logo';
 
 // Simple accordion item component for the FAQ section
 const FaqAccordionItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => {
@@ -103,11 +104,12 @@ const Home: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 md:pt-16"
         >
-          <motion.div variants={itemVariants} className="inline-block bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm font-semibold mb-6 border border-white/20">
-            CNPJ: {CONTACT_INFO.cnpj}
+          <motion.div variants={itemVariants} className="block text-white text-sm font-bold tracking-[0.3em] uppercase mb-4 opacity-80">
+            Associação Barnabé
           </motion.div>
+
           <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight drop-shadow-2xl">
             Preparando jovens <br />
             <span className="text-aba-orange inline-block relative">

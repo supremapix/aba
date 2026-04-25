@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Button from '../components/Button';
 import { Heart, Lock } from 'lucide-react';
 import SEO from '../components/SEO';
+import { motion } from 'motion/react';
+import { Logo } from '../components/Logo';
 
 const DonorArea: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -12,11 +14,21 @@ const DonorArea: React.FC = () => {
         title={isLogin ? "Área do Doador - Login" : "Cadastro de Doador"} 
         description="Acesse a área restrita para doadores da Associação Barnabé. Visualize seus recibos e relatórios exclusivos."
       />
-      <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-2xl">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-md w-full space-y-8 bg-white p-10 rounded-[2.5rem] shadow-2xl border border-gray-100"
+      >
         <div className="text-center">
-          <div className="mx-auto h-16 w-16 bg-blue-50 rounded-full flex items-center justify-center text-aba-blue mb-4">
-            <Heart className="h-10 w-10 fill-current" />
-          </div>
+          <motion.div 
+            whileHover={{ scale: 1.1, rotate: 10 }}
+            whileTap={{ scale: 0.9, rotate: -10 }}
+            className="mx-auto h-24 w-24 bg-blue-50 rounded-full flex items-center justify-center mb-6 shadow-inner relative group"
+          >
+            <Logo size="md" showText={false} />
+            <div className="absolute inset-0 bg-aba-blue/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.div>
           <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
             {isLogin ? 'Área do Doador' : 'Criar Conta'}
           </h2>
@@ -77,7 +89,7 @@ const DonorArea: React.FC = () => {
             {isLogin ? 'Não tem uma conta? Cadastre-se' : 'Já é doador? Faça login'}
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

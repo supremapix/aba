@@ -3,10 +3,14 @@ import { CONTACT_INFO, WHATSAPP_URL } from '../constants';
 import { Phone, MapPin, Mail, Instagram, Facebook, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
+import { Logo } from './Logo';
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-900 text-white pt-16 pb-8 relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-aba-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      
       <style>{`
         @keyframes heartbeat {
           0%, 100% { transform: scale(1); }
@@ -30,10 +34,20 @@ const Footer: React.FC = () => {
         >
           {/* Brand Column */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-               <Heart className="h-8 w-8 text-aba-orange" />
-               <span className="text-2xl font-serif font-bold">ABA</span>
-            </div>
+            <Link to="/" className="flex items-center space-x-3 mb-6 group">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="bg-white/10 p-2 rounded-xl backdrop-blur-sm group-hover:bg-white/20 transition-colors">
+                  <Logo size="md" showText={false} variant="light" className="brightness-0 invert" />
+                </div>
+              </motion.div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-serif font-bold tracking-tight text-white leading-none">ABA</span>
+                <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-white/50">Associação Barnabé</span>
+              </div>
+            </Link>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Associação Barnabé. Transformando vidas e construindo futuros através do acolhimento e oportunidades para jovens.
             </p>

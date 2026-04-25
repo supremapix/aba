@@ -5,6 +5,7 @@ import { Target, Eye, Heart, Users, Award } from 'lucide-react';
 import { motion } from 'motion/react';
 import SEO from '../components/SEO';
 import ScrollAnimation from '../components/ScrollAnimation';
+import { Logo } from '../components/Logo';
 
 const About: React.FC = () => {
   return (
@@ -25,19 +26,40 @@ const About: React.FC = () => {
           <div className="absolute inset-0 bg-aba-blue mix-blend-multiply"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-white font-serif mb-6 drop-shadow-lg tracking-tight">
-              Nossa <span className="text-aba-orange">História</span>
-            </h1>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light">
-              Mais do que um teto, somos uma família de transição. A Associação Barnabé existe para garantir que nenhum jovem tenha que enfrentar o mundo sozinho ao completar 18 anos.
-            </p>
-          </motion.div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ 
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+                delay: 0.2
+              }}
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition-rotate={{ duration: 0.8 }}
+              className="mb-8"
+            >
+              <div className="p-4 bg-white rounded-full shadow-2xl border border-gray-100">
+                <Logo size="lg" showText={false} />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
+              <h1 className="text-4xl md:text-6xl font-bold text-white font-serif mb-6 drop-shadow-lg tracking-tight">
+                Nossa <span className="text-aba-orange">História</span>
+              </h1>
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light">
+                Mais do que um teto, somos uma família de transição. A Associação Barnabé existe para garantir que nenhum jovem tenha que enfrentar o mundo sozinho ao completar 18 anos.
+              </p>
+            </motion.div>
+          </div>
         </div>
 
         <div className="absolute -bottom-1 left-0 w-full">

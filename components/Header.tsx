@@ -4,6 +4,7 @@ import { Menu, X, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { NAV_ITEMS } from '../constants';
 import Button from './Button';
+import { Logo } from './Logo';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,26 +32,42 @@ const Header: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed w-full z-50 transition-all duration-500 ${
         showBackground 
-          ? 'bg-white/90 backdrop-blur-md shadow-lg py-2 border-b border-gray-100' 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg py-2 border-b border-gray-100' 
           : 'bg-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className={`p-2 rounded-full transition-colors duration-300 ${
-              showBackground ? 'bg-aba-blue text-white' : 'bg-white text-aba-blue'
-            }`}>
-              <Heart className="h-6 w-6 fill-current" />
+          <Link to="/" className="flex items-center space-x-3 group">
+            <motion.div 
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.9, rotate: -5 }}
+              className="relative bg-white p-1.5 rounded-xl shadow-sm border border-gray-100"
+            >
+              <Logo 
+                size="md" 
+                showText={false} 
+              />
+              <motion.div 
+                className="absolute inset-0 bg-aba-blue/5 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"
+                layoutId="logo-glow"
+              />
+            </motion.div>
+            <div className="hidden md:flex flex-col">
+              <span className={`text-2xl font-bold font-serif transition-colors duration-300 leading-none ${
+                showBackground ? 'text-aba-blue' : 'text-white'
+              }`}>
+                ABA
+              </span>
+              <span className={`text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300 ${
+                showBackground ? 'text-gray-500' : 'text-white/80'
+              }`}>
+                Associação Barnabé
+              </span>
             </div>
-            <span className={`text-2xl font-bold font-serif transition-colors duration-300 ${
-              showBackground ? 'text-aba-blue' : 'text-white drop-shadow-md'
-            }`}>
-              ABA
-            </span>
           </Link>
 
           {/* Desktop Nav */}

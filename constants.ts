@@ -3,6 +3,8 @@ import { NavItem, Plan, Stat, FaqItem, TeamMember, BlogPost, AreaInfo } from './
 
 export const WHATSAPP_URL = "https://wa.me/5551998147660?text=Ol%C3%A1%20vi%20seu%20site%20e%20*gostaria%20de%20saber%20sobre%3A*";
 
+export const LOGO_URL = "https://lh3.googleusercontent.com/d/1lwS4YXTkNPHw3AZsgPj28K7cnFQElRmE";
+
 export const CONTACT_INFO = {
   address: "Av. Brasil, 330 - Bairro Barnabé, Gravataí/RS - CEP: 94150-000",
   phone: "(51) 99814-7660",
