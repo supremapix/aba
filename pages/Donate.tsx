@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { DONATION_PLANS, CONTACT_INFO, WHATSAPP_URL } from '../constants';
 import Button from '../components/Button';
+import { motion } from 'motion/react';
 import { Check, Copy, Heart, Hand, Building, Coffee, BookOpen, Lightbulb, User, Mail, Phone, Calendar, Briefcase, Star } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollAnimation from '../components/ScrollAnimation';
@@ -72,15 +73,30 @@ const Donate: React.FC = () => {
         description="Saiba como doar para a Associação Barnabé. Seja um padrinho, faça uma doação via PIX, direcione seu Imposto de Renda ou seja voluntário."
         schema={donateSchema}
       />
-      <header className="bg-aba-orange py-20 text-white relative overflow-hidden" role="banner">
-         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" aria-hidden="true"></div>
+      <header className="relative bg-aba-orange py-24 text-white overflow-hidden" role="banner">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <ScrollAnimation>
-            <h1 className="text-4xl md:text-5xl font-bold font-serif mb-6">Como Ajudar</h1>
-            <p className="text-xl md:text-2xl text-orange-100 max-w-3xl mx-auto leading-relaxed">
-              Sua doação não é apenas dinheiro; é a oportunidade de um futuro digno para um jovem. Escolha como você quer transformar vidas hoje.
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold font-serif mb-6 drop-shadow-lg">
+              Transforme <span className="text-aba-darkBlue">Vidas</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-orange-50 max-w-3xl mx-auto leading-relaxed font-light mb-8">
+              Sua doação não é apenas dinheiro; é a oportunidade de um futuro digno para um jovem. Escolha como você quer mudar o mundo hoje.
             </p>
-          </ScrollAnimation>
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 3, repeat: Infinity }}
+              className="inline-block"
+            >
+              <Heart className="w-12 h-12 text-white fill-current opacity-50" />
+            </motion.div>
+          </motion.div>
         </div>
       </header>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { CheckCircle, Clock, Book, Briefcase, Smile, Key, Users, TrendingUp } from 'lucide-react';
+import { motion } from 'motion/react';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -13,17 +14,37 @@ const Project: React.FC = () => {
         title="O Projeto República para Jovens" 
         description="Conheça a metodologia da República para Jovens da ABA. Moradia digna, plano de desenvolvimento individual (PDI), educação financeira e autonomia."
       />
-      <div className="bg-aba-blue py-20 text-white relative overflow-hidden" role="banner">
-        <div className="absolute inset-0 bg-black/20" aria-hidden="true"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <ScrollAnimation>
-            <h1 className="text-4xl md:text-5xl font-bold font-serif mb-6">Projeto República para Jovens</h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+      
+      {/* Hero Section */}
+      <section className="relative py-24 bg-aba-blue overflow-hidden" role="banner">
+        <div className="absolute inset-0 opacity-20">
+          <img 
+            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=1920" 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-aba-darkBlue to-aba-blue"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif mb-6 text-white leading-tight">
+              Projeto <span className="text-aba-orange underline decoration-aba-orange/30 underline-offset-8">República</span> para Jovens
+            </h1>
+            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-light">
               Uma ponte segura e estruturada entre o acolhimento institucional e a vida adulta independente.
             </p>
-          </ScrollAnimation>
+          </motion.div>
         </div>
-      </div>
+
+        <div className="absolute top-0 right-0 p-24 opacity-10">
+          <Users className="w-64 h-64 text-white" />
+        </div>
+      </section>
 
       {/* Methodology Section */}
       <section className="py-20" aria-labelledby="metodologia-title">

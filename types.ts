@@ -48,3 +48,11 @@ export interface Comment {
   date: string;
   content: string;
 }
+
+export interface AreaInfo {
+  name: string;
+  slug: string;
+  distance: string;
+  description: string;
+  type: 'bairro' | 'cidade';
+}

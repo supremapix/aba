@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Star, Heart, Shield, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { motion } from 'motion/react';
 import Button from '../components/Button';
 import SectionTitle from '../components/SectionTitle';
-import { STATS, CONTACT_INFO, FAQS } from '../constants';
+import InfiniteMarquee from '../components/InfiniteMarquee';
+import { STATS, CONTACT_INFO, FAQS, BAIRROS, CIDADES } from '../constants';
 import SEO from '../components/SEO';
 import ScrollAnimation from '../components/ScrollAnimation';
 
@@ -55,6 +57,26 @@ const Home: React.FC = () => {
     ]
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
   return (
     <>
       <SEO 
@@ -65,60 +87,115 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden" aria-label="Introdução">
         <div className="absolute inset-0 z-0">
-          <img 
+          <motion.img 
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 10, repeat: Infinity, repeatType: "mirror", ease: "linear" }}
             src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&q=80&w=1920" 
             alt="Grupo diverso de jovens abraçados e sorrindo, representando a união da juventude" 
-            className="w-full h-full object-cover animate-slow-zoom"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-aba-darkBlue/90 via-aba-blue/80 to-aba-orange/30 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-block bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm font-semibold mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <motion.div variants={itemVariants} className="inline-block bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm font-semibold mb-6 border border-white/20">
             CNPJ: {CONTACT_INFO.cnpj}
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight drop-shadow-lg opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          </motion.div>
+          <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight drop-shadow-2xl">
             Preparando jovens <br />
-            <span className="text-aba-orange inline-block">para voar alto</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-100 mb-10 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            <span className="text-aba-orange inline-block relative">
+              para voar alto
+              <motion.span 
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+                className="absolute bottom-1 left-0 h-1.5 bg-aba-orange/30 rounded-full"
+              />
+            </span>
+          </motion.h1>
+          <motion.p variants={itemVariants} className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md">
             Oferecemos um lar seguro, afeto e oportunidades reais para jovens que completam 18 anos e precisam sair dos abrigos institucionais.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
+          </motion.p>
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link to="/doar">
-              <Button size="lg" variant="secondary" className="shadow-orange-900/50">
+              <Button size="lg" variant="secondary" className="shadow-2xl shadow-aba-orange/20 ring-4 ring-aba-orange/10">
                 <Heart className="mr-2 h-5 w-5 animate-pulse" /> Seja um Padrinho
               </Button>
             </Link>
             <Link to="/projeto">
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-aba-blue bg-white/10 backdrop-blur-sm">
+              <Button size="lg" variant="outline" className="text-white border-white/50 hover:border-white hover:bg-white hover:text-aba-blue bg-white/5 backdrop-blur-sm transition-all duration-300">
                 Conheça o Projeto
               </Button>
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float text-white/70">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 1, repeat: Infinity, repeatType: "mirror" }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70"
+        >
           <ChevronRight className="h-10 w-10 rotate-90" />
-        </div>
+        </motion.div>
       </section>
 
       {/* Impact Stats */}
-      <section className="py-16 bg-white -mt-10 relative z-20 rounded-t-3xl shadow-2xl mx-4 lg:mx-12 border-b border-gray-100" aria-label="Estatísticas de Impacto">
+      <section className="py-16 bg-white -mt-10 relative z-20 rounded-t-[3rem] shadow-2xl mx-2 lg:mx-8 border-b border-gray-100" aria-label="Estatísticas de Impacto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-x divide-gray-100">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:divide-x lg:divide-gray-100">
             {STATS.map((stat, index) => (
               <ScrollAnimation key={index} delay={index * 100}>
-                <div className="text-center p-4 hover:bg-gray-50 transition-all duration-300 rounded-lg group hover:-translate-y-1">
-                  <div className="inline-flex items-center justify-center p-3 bg-blue-50 rounded-full text-aba-blue mb-4 shadow-sm group-hover:bg-aba-blue group-hover:text-white transition-colors duration-300">
+                <div className="text-center p-4 hover:bg-gray-50 transition-all duration-300 rounded-3xl group hover:-translate-y-2">
+                  <div className="inline-flex items-center justify-center p-4 bg-blue-50 rounded-2xl text-aba-blue mb-5 shadow-sm group-hover:bg-aba-blue group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
                     <stat.icon className="h-8 w-8" />
                   </div>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                  <div className="text-gray-600 font-medium uppercase tracking-wide text-sm">{stat.label}</div>
+                  <div className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2 tracking-tight">{stat.value}</div>
+                  <div className="text-gray-500 font-semibold uppercase tracking-widest text-xs">{stat.label}</div>
                 </div>
               </ScrollAnimation>
             ))}
           </div>
+        </div>
+      </section>
+      
+      {/* Areas Section (Marquees) */}
+      <section className="py-24 bg-gray-50 overflow-hidden" aria-label="Bairros e Cidades Atendidos">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
+          <SectionTitle 
+            title="Sempre perto de você" 
+            subtitle="Atuamos intensamente em Gravataí e toda a região metropolitana para levar estrutura e futuro aos nossos jovens."
+            centered
+          />
+        </div>
+
+        {/* Bairros - Right Scroll */}
+        <div className="mb-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+            <h3 className="text-xl font-bold text-gray-800 flex items-center space-x-2">
+              <span className="w-8 h-1 bg-aba-blue rounded-full"></span>
+              <span>Bairros em Gravataí</span>
+            </h3>
+          </div>
+          <InfiniteMarquee items={BAIRROS} direction="right" speed={40} />
+        </div>
+
+        {/* Cidades - Left Scroll */}
+        <div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+            <h3 className="text-xl font-bold text-gray-800 flex items-center space-x-2">
+              <span className="w-8 h-1 bg-aba-green rounded-full"></span>
+              <span>Cidades na Região</span>
+            </h3>
+          </div>
+          <InfiniteMarquee items={CIDADES} direction="left" speed={60} />
         </div>
       </section>
 

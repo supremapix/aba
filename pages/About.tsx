@@ -2,28 +2,50 @@ import React from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { TEAM } from '../constants';
 import { Target, Eye, Heart, Users, Award } from 'lucide-react';
+import { motion } from 'motion/react';
 import SEO from '../components/SEO';
 import ScrollAnimation from '../components/ScrollAnimation';
 
 const About: React.FC = () => {
   return (
-    <div className="pt-20">
+    <div className="pt-20 overflow-hidden">
       <SEO 
         title="Sobre Nós - Nossa História e Missão" 
         description="Conheça a história da Associação Barnabé, nossa missão de acolher jovens egressos de abrigos, nossos valores e a equipe que faz a diferença."
       />
       
-      {/* Header */}
-      <header className="bg-gray-100 py-16" role="banner">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollAnimation>
-            <h1 className="text-4xl md:text-5xl font-bold text-aba-blue font-serif mb-6">Sobre a ABA</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+      {/* Header / Hero */}
+      <section className="relative py-24 bg-slate-900 overflow-hidden" role="banner">
+        <div className="absolute inset-0 opacity-20">
+          <img 
+            src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1920" 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-aba-blue mix-blend-multiply"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl md:text-6xl font-bold text-white font-serif mb-6 drop-shadow-lg tracking-tight">
+              Nossa <span className="text-aba-orange">História</span>
+            </h1>
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light">
               Mais do que um teto, somos uma família de transição. A Associação Barnabé existe para garantir que nenhum jovem tenha que enfrentar o mundo sozinho ao completar 18 anos.
             </p>
-          </ScrollAnimation>
+          </motion.div>
         </div>
-      </header>
+
+        <div className="absolute -bottom-1 left-0 w-full">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+            <path d="M0 120H1440V0C1440 0 1080 120 720 120C360 120 0 0 0 0V120Z" fill="white"/>
+          </svg>
+        </div>
+      </section>
 
       {/* Mission/Vision/Values */}
       <section className="py-16 relative overflow-hidden" aria-labelledby="pilares-title">
