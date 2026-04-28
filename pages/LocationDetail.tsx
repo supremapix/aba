@@ -150,11 +150,20 @@ const LocationDetail: React.FC = () => {
                 ))}
               </ul>
 
-              <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                <p className="text-gray-700 italic mb-4">
-                  "O trabalho social em {area.name} é essencial para que nossos jovens encontrem um caminho digno e estruturado. Sem o apoio dos padrinhos, nada disso seria possível."
-                </p>
-                <p className="font-bold text-aba-blue">— Robinson Pereira, Fundador da ABA</p>
+              <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col md:flex-row items-center gap-6">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="https://lp.associacaobarnabe.org/robinson-associacao-barnabe.png" 
+                    alt="Robinson Pereira" 
+                    className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md"
+                  />
+                </div>
+                <div>
+                  <p className="text-gray-700 italic mb-4">
+                    "O trabalho social em {area.name} é essencial para que nossos jovens encontrem um caminho digno e estruturado. Sem o apoio dos padrinhos, nada disso seria possível."
+                  </p>
+                  <p className="font-bold text-aba-blue">— Robinson Pereira, Fundador da ABA</p>
+                </div>
               </div>
             </motion.div>
           </div>
