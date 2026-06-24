@@ -247,6 +247,90 @@ export const BLOG_POSTS: BlogPost[] = [
       
       <p>O relatório financeiro completo, com todas as notas fiscais e balancetes, está disponível na nossa página de <a href="#/transparencia" class="text-aba-blue hover:underline">Transparência</a>.</p>
     `
+  },
+  {
+    id: 9,
+    slug: "papel-transformador-padrinho-historia-lucas",
+    title: "O Papel Transformador de um Padrinho: A história de Lucas",
+    excerpt: "Conheça a trajetória de Lucas, que através do apadrinhamento financeiro e mentoria, conseguiu concluir sua faculdade de TI e hoje atua em uma multinacional.",
+    date: "22 Jun, 2026",
+    isoDate: "2026-06-22",
+    category: "Apadrinhamento",
+    image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=800",
+    content: `
+      <p class="mb-4">Ao completar 18 anos em um abrigo institucional, Lucas sentiu o peso da incerteza. Sem família e sem recursos, o futuro parecia uma estrada sem saída. No entanto, sua trajetória tomou um novo rumo quando ele foi acolhido pela República da Associação Barnabé e conheceu o programa de <strong>Apadrinhamento</strong>.</p>
+      
+      <p class="mb-4">Mais do que uma contribuição financeira mensal de R$ 100,00, o apadrinhamento conectou Lucas a uma rede de pessoas que acreditavam no seu potencial. Com os recursos arrecadados por seus padrinhos, a ABA custeou sua alimentação, moradia e, fundamentalmente, sua inscrição e transporte para um curso técnico de Tecnologia da Informação.</p>
+      
+      <h3 class="text-xl font-bold text-gray-800 mt-6 mb-3">De Acolhido a Profissional de TI</h3>
+      <p class="mb-4">Durante sua estadia de dois anos na República da ABA, Lucas dedicou-se integralmente aos estudos. Ele contou com a mentoria de profissionais voluntários da área e a estabilidade de ter um teto seguro e alimentação garantida.</p>
+      
+      <p class="mb-4"><em>\"Saber que pessoas que eu nem conhecia estavam investindo no meu futuro todo mês me deu uma força gigantesca para não desistir nos momentos difíceis\"</em>, relata Lucas com os olhos brilhantes.</p>
+      
+      <p class="mb-4">Hoje, com 21 anos, Lucas é desenvolvedor júnior em uma empresa de tecnologia multinacional em Porto Alegre. Ele reside em seu próprio apartamento alugado, conquistou sua total independência financeira e, de forma emocionante, tornou-se recentemente um <strong>doador recorrente da ABA</strong>, ajudando a financiar o mesmo teto que um dia o acolheu.</p>
+      
+      <p class="mb-6">Histórias como a do Lucas mostram que o apadrinhamento não é uma despesa, mas sim um investimento de altíssimo retorno social. Seja um padrinho e reescreva um destino hoje mesmo!</p>
+    `
+  },
+  {
+    id: 10,
+    slug: "guia-completo-apadrinhamento-futuro-jovens-abrigos",
+    title: "Guia Prático: Por que apadrinhar um jovem que sai de abrigo muda o seu destino?",
+    excerpt: "Entenda o impacto prático de se tornar um padrinho ou madrinha da ABA e como sua ajuda mensal sustenta moradia, alimentação e sonhos de jovens vulneráveis.",
+    date: "18 Jun, 2026",
+    isoDate: "2026-06-18",
+    category: "Como Ajudar",
+    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=800",
+    content: `
+      <p class="mb-4">O apadrinhamento financeiro é a espinha dorsal da Associação Barnabé. É através dessa modalidade de doação recorrente que conseguimos garantir a estabilidade das nossas Repúblicas e manter as portas abertas para jovens que completam 18 anos e perdem o direito de permanecer em abrigos públicos.</p>
+      
+      <p class="mb-4">Se você já pensou em ajudar, mas tem dúvidas sobre como funciona o programa na prática, este guia foi feito para você.</p>
+      
+      <h3 class="text-xl font-bold text-gray-800 mt-6 mb-3">O que é o Apadrinhamento da ABA?</h3>
+      <p class="mb-4">Ao contrário de doações esporádicas, o apadrinhamento é um compromisso mensal recorrente. Ele permite que nossa equipe planeje as despesas fixas das casas com segurança, sem o risco de faltar recursos para itens básicos como aluguel, luz e alimentação.</p>
+      
+      <h3 class="text-xl font-bold text-gray-800 mt-6 mb-3">Para onde vai o seu investimento?</h3>
+      <p class="mb-4">Cada centavo do apadrinhamento é direcionado diretamente para o bem-estar e desenvolvimento dos jovens:</p>
+      
+      <ul class="list-disc pl-5 mb-6 space-y-2 text-gray-700">
+        <li><strong>Aluguel e Contas de Consumo:</strong> Garantia de moradia limpa, segura, com energia, água e internet (essencial para os estudos).</li>
+        <li><strong>Alimentação Nutritiva:</strong> Compra de mantimentos de qualidade para as refeições diárias de todas as repúblicas.</li>
+        <li><strong>Educação e Profissionalização:</strong> Passagens de ônibus para cursos técnicos e faculdades, além de materiais didáticos e taxas de inscrição.</li>
+        <li><strong>Apoio Psicossocial:</strong> Acompanhamento profissional para ajudar o jovem a superar traumas e planejar sua carreira com autonomia.</li>
+      </ul>
+      
+      <h3 class="text-xl font-bold text-gray-800 mt-6 mb-3">Como se tornar um padrinho ou madrinha?</h3>
+      <p class="mb-4">O processo é simples e 100% transparente. Você pode escolher um plano que caiba no seu orçamento mensal (R$ 50, R$ 100 ou R$ 300) diretamente na nossa página <a href="#/doar" class="text-aba-blue hover:underline">Como Ajudar</a>. Mensalmente, você receberá relatórios com a prestação de contas detalhada e histórias de impacto dos jovens que você está ajudando a manter de pé.</p>
+      
+      <p class="mt-6">Lembre-se: quando um jovem de 18 anos sai de um abrigo, o mundo diz que ele está sozinho. Ao se tornar padrinho, você diz a ele: <em>\"Você tem a mim, e nós vamos vencer essa juntos\"</em>.</p>
+    `
+  },
+  {
+    id: 11,
+    slug: "por-que-apadrinhamento-e-mais-que-doacao-rede-afeto",
+    title: "Por que o apadrinhamento é mais do que uma doação: é uma rede de afeto e oportunidade",
+    excerpt: "Investir no futuro de um jovem que atingiu a maioridade sem família é quebrar o ciclo de vulnerabilidade social. Saiba como você pode fazer parte dessa rede.",
+    date: "10 Jun, 2026",
+    isoDate: "2026-06-10",
+    category: "Inspiração",
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800",
+    content: `
+      <p class="mb-4">A vulnerabilidade social é como uma corrente: ela se perpetua de geração em geração se nada for feito para rompê-la. Quando um jovem completa 18 anos e deixa o sistema de acolhimento estatal, ele é colocado na sociedade com uma mochila nas costas e nenhum porto seguro.</p>
+      
+      <p class="mb-4">É exatamente nessa lacuna que a Associação Barnabé atua, e é aí que o seu papel como padrinho ou madrinha se torna sagrado. O apadrinhamento é o elo que quebra essa corrente de vulnerabilidade.</p>
+      
+      <h3 class="text-xl font-bold text-gray-800 mt-6 mb-3">A Ciência da Oportunidade</h3>
+      <p class="mb-4">Estudos sobre impacto social mostram que jovens que recebem apoio estruturado e financeiro nos primeiros anos da vida adulta têm 80% more chances de obter emprego formal e estabilidade habitacional de longo prazo, em comparação àqueles que são desassistidos.</p>
+      
+      <p class="mb-4">O programa da ABA oferece essa base. Através das Repúblicas, damos o teto e o afeto. Através do seu apadrinhamento, viabilizamos as ferramentas práticas: o curso profissionalizante, o terno para a primeira entrevista, a passagem de ônibus, o livro de estudos.</p>
+      
+      <h3 class="text-xl font-bold text-gray-800 mt-6 mb-3">Um Convite à Solidariedade Coletiva</h3>
+      <p class="mb-4">Nós não queremos apenas que os jovens sobrevivam; queremos que eles prosperem, liderem e inspirem. E isso só é possível quando a sociedade civil toma para si a responsabilidade de cuidar da sua juventude.</p>
+      
+      <p class="mb-4">Seja você uma pessoa física ou uma empresa, apoiar a ABA é atuar ativamente na construção de uma Gravataí mais justa, segura e cheia de oportunidades.</p>
+      
+      <p>Junte-se à nossa rede. Descubra a incrível alegria de ver um jovem crescer sob suas asas.</p>
+    `
   }
 ];
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Star, Heart, Shield, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronRight, Star, Heart, Shield, HelpCircle, ChevronDown, ChevronUp, Calendar } from 'lucide-react';
 import { motion } from 'motion/react';
 import Button from '../components/Button';
 import SectionTitle from '../components/SectionTitle';
 import InfiniteMarquee from '../components/InfiniteMarquee';
-import { STATS, CONTACT_INFO, FAQS, BAIRROS, CIDADES } from '../constants';
+import { STATS, CONTACT_INFO, FAQS, BAIRROS, CIDADES, BLOG_POSTS } from '../constants';
 import SEO from '../components/SEO';
 import ScrollAnimation from '../components/ScrollAnimation';
 import { Logo } from '../components/Logo';
@@ -77,6 +77,12 @@ const Home: React.FC = () => {
       transition: { duration: 0.8, ease: "easeOut" }
     }
   };
+
+  const latestPosts = React.useMemo(() => {
+    return [...BLOG_POSTS]
+      .sort((a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime())
+      .slice(0, 3);
+  }, []);
 
   return (
     <>
@@ -246,6 +252,60 @@ const Home: React.FC = () => {
                 </div>
               </ScrollAnimation>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Teaser Section */}
+      <section className="py-24 bg-white border-b border-gray-100" aria-labelledby="latest-news-title">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+              <SectionTitle title="Histórias e Novidades" subtitle="Nosso Blog" centered={false} />
+              <p className="text-gray-600 max-w-2xl mt-2 text-lg">
+                Fique por dentro do dia a dia da república, histórias reais de superação e guias práticos sobre como seu apoio transforma destinos.
+              </p>
+            </div>
+            <Link to="/blog" className="mt-4 md:mt-0 inline-flex items-center text-aba-blue font-bold hover:underline group">
+              Ver todas as matérias <ChevronRight className="w-5 h-5 ml-1 transform group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {latestPosts.map((post, index) => (
+              <ScrollAnimation key={post.id} delay={index * 150} className="h-full">
+                <Link to={`/blog/${post.slug}`} className="block h-full group">
+                  <article className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-full border border-gray-100">
+                    <div className="relative h-48 overflow-hidden">
+                      <img 
+                        src={post.image} 
+                        alt={post.title} 
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
+                        loading="lazy"
+                      />
+                      <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm text-aba-blue text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        {post.category}
+                      </div>
+                    </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className="text-xs text-gray-500 mb-3 flex items-center">
+                        <Calendar className="h-3.5 w-3.5 mr-1 text-aba-orange" />
+                        <span>{post.date}</span>
+                      </div>
+                      <h3 className="text-lg font-bold mb-2 text-gray-900 group-hover:text-aba-blue transition-colors line-clamp-2 leading-snug">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                        {post.excerpt}
+                      </p>
+                      <div className="mt-auto text-aba-blue text-xs font-bold flex items-center group-hover:underline">
+                        Ler Matéria Completa <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              </ScrollAnimation>
+            ))}
           </div>
         </div>
       </section>

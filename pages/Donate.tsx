@@ -2,14 +2,26 @@ import React, { useState } from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { DONATION_PLANS, CONTACT_INFO, WHATSAPP_URL } from '../constants';
 import Button from '../components/Button';
-import { motion } from 'motion/react';
-import { Check, Copy, Heart, Hand, Building, Coffee, BookOpen, Lightbulb, User, Mail, Phone, Calendar, Briefcase, Star } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Check, Copy, Heart, Hand, Building, Coffee, BookOpen, Lightbulb, User, Mail, Phone, Calendar, Briefcase, Star, X, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import ScrollAnimation from '../components/ScrollAnimation';
 
 const Donate: React.FC = () => {
   const [copied, setCopied] = useState(false);
   
+  // Active Plan for Apadrinhamento Modal
+  const [activePlan, setActivePlan] = useState<{ name: string; price: number; benefits: string[] } | null>(null);
+
+  // Sponsor Form State
+  const [sponsorForm, setSponsorForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    method: 'PIX Recorrente',
+    message: ''
+  });
+
   // Volunteer Form State
   const [volunteerForm, setVolunteerForm] = useState({
     name: '',
@@ -45,6 +57,26 @@ const Donate: React.FC = () => {
     const waNumber = "5551998147660"; 
     const whatsappUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const handleSponsorChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setSponsorForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSponsorSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!activePlan) return;
+    
+    const text = `*Novo Cadastro de Padrinho/Madrinha ABA* 💙\n\n*Plano Escolhido:* ${activePlan.name} (R$ ${activePlan.price}/mês)\n*Nome:* ${sponsorForm.name}\n*WhatsApp:* ${sponsorForm.phone}\n*Email:* ${sponsorForm.email}\n*Forma de Contribuição:* ${sponsorForm.method}\n\n*Mensagem/Obs:* ${sponsorForm.message || 'Sem observações'}`;
+    
+    const waNumber = "5551998147660"; 
+    const whatsappUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, '_blank');
+    setActivePlan(null); // Close modal on submit
   };
 
   const donateSchema = {
@@ -160,7 +192,11 @@ const Donate: React.FC = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button fullWidth variant={plan.recommended ? 'primary' : 'outline'}>
+                    <Button 
+                      fullWidth 
+                      variant={plan.recommended ? 'primary' : 'outline'}
+                      onClick={() => setActivePlan(plan)}
+                    >
                       Quero Apadrinhar
                     </Button>
                   </div>
@@ -399,6 +435,144 @@ const Donate: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Sponsor Modal */}
+      <AnimatePresence>
+        {activePlan && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActivePlan(null)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+            
+            {/* Modal Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-white rounded-3xl max-w-lg w-full p-8 relative shadow-2xl overflow-hidden z-10 border border-gray-100 max-h-[90vh] overflow-y-auto"
+            >
+              <button 
+                onClick={() => setActivePlan(null)}
+                className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition-colors"
+                title="Fechar"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <div className="flex items-center gap-2 mb-4 text-aba-orange font-bold text-sm uppercase tracking-wider">
+                <Sparkles className="w-5 h-5" />
+                <span>Excelente Escolha!</span>
+              </div>
+
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Plano: <span className="text-aba-blue">{activePlan.name}</span>
+              </h3>
+              <p className="text-gray-500 text-sm mb-6">
+                Com apenas <strong className="text-gray-800">R$ {activePlan.price},00 por mês</strong>, você garante sustentabilidade e novas perspectivas de futuro para nossos jovens.
+              </p>
+
+              <form onSubmit={handleSponsorSubmit} className="space-y-4 text-left">
+                <div>
+                  <label htmlFor="spons_name" className="block text-sm font-bold text-gray-700 mb-1">
+                    Nome Completo
+                  </label>
+                  <input
+                    type="text"
+                    id="spons_name"
+                    name="name"
+                    value={sponsorForm.name}
+                    onChange={handleSponsorChange}
+                    required
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all text-sm"
+                    placeholder="Seu nome"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="spons_phone" className="block text-sm font-bold text-gray-700 mb-1">
+                      WhatsApp
+                    </label>
+                    <input
+                      type="tel"
+                      id="spons_phone"
+                      name="phone"
+                      value={sponsorForm.phone}
+                      onChange={handleSponsorChange}
+                      required
+                      className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all text-sm"
+                      placeholder="(51) 99999-9999"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="spons_email" className="block text-sm font-bold text-gray-700 mb-1">
+                      E-mail
+                    </label>
+                    <input
+                      type="email"
+                      id="spons_email"
+                      name="email"
+                      value={sponsorForm.email}
+                      onChange={handleSponsorChange}
+                      required
+                      className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all text-sm"
+                      placeholder="seu@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="spons_method" className="block text-sm font-bold text-gray-700 mb-1">
+                    Como Prefere Contribuir?
+                  </label>
+                  <select
+                    id="spons_method"
+                    name="method"
+                    value={sponsorForm.method}
+                    onChange={handleSponsorChange}
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all bg-white text-sm"
+                  >
+                    <option>PIX Recorrente</option>
+                    <option>Cartão de Crédito</option>
+                    <option>Boleto Bancário</option>
+                    <option>Transferência Direta (TED)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="spons_msg" className="block text-sm font-bold text-gray-700 mb-1">
+                    Mensagem de Apoio (Opcional)
+                  </label>
+                  <textarea
+                    id="spons_msg"
+                    name="message"
+                    value={sponsorForm.message}
+                    onChange={handleSponsorChange}
+                    rows={2}
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-aba-blue focus:border-transparent transition-all text-sm"
+                    placeholder="Se quiser, deixe um recado para os jovens acolhidos..."
+                  />
+                </div>
+
+                <div className="pt-2">
+                  <Button type="submit" size="md" className="w-full flex justify-center items-center gap-2">
+                    <Heart className="w-4 h-4 animate-pulse" />
+                    Iniciar Meu Apadrinhamento
+                  </Button>
+                  <p className="text-[11px] text-gray-400 text-center mt-3">
+                    Você será redirecionado para o WhatsApp oficial da ABA para concluir a configuração segura do seu apadrinhamento mensal.
+                  </p>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
