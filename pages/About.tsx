@@ -53,10 +53,10 @@ const About: React.FC = () => {
               className="text-center"
             >
               <h1 className="text-4xl md:text-6xl font-bold text-white font-serif mb-6 drop-shadow-lg tracking-tight">
-                Nossa <span className="text-aba-orange">História</span>
+                Acolher vidas. <span className="text-aba-orange">Construir futuros.</span> Transformar histórias.
               </h1>
               <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light">
-                Mais do que um teto, somos uma família de transição. A Associação Barnabé existe para garantir que nenhum jovem tenha que enfrentar o mundo sozinho ao completar 18 anos.
+                Quando o abrigo termina, o futuro não pode terminar junto. A Associação Barnabé é a ponte entre o acolhimento institucional e a independência da vida adulta.
               </p>
             </motion.div>
           </div>
