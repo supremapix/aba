@@ -36,9 +36,10 @@ const Project: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md text-amber-300 rounded-full text-xs sm:text-sm font-bold uppercase tracking-widest mb-6 border border-white/20">
-              Projeto República para Jovens em Transição
-            </span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 backdrop-blur-md text-amber-300 rounded-full text-xs sm:text-sm font-bold tracking-wide uppercase mb-6 border border-amber-400/30 shadow-lg">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+              <span>Projeto em Fase de Implantação • Buscando Padrinhos e Parceiros para o Pontapé Inicial</span>
+            </div>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif mb-6 text-white leading-tight max-w-4xl mx-auto">
               Quando o abrigo termina, <span className="text-aba-orange underline decoration-aba-orange/30 underline-offset-8">o futuro não pode terminar junto.</span>
             </h1>

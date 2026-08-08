@@ -25,50 +25,58 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const STATS: Stat[] = [
-  { value: "150+", label: "Jovens Atendidos", icon: Users },
-  { value: "3", label: "Casas Mantidas", icon: Home },
-  { value: "100%", label: "Gratuito", icon: Heart },
-  { value: "50+", label: "Parceiros", icon: ShieldCheck },
+  { value: "150+", label: "Atendimentos na Comunidade", icon: Users },
+  { value: "12 Vagas", label: "Meta Inicial da República", icon: Home },
+  { value: "100%", label: "Gratuito e Sem Fins Lucrativos", icon: Heart },
+  { value: "50+", label: "Apoiadores & Parceiros", icon: ShieldCheck },
 ];
 
 export const DONATION_PLANS: Plan[] = [
   {
     name: "Apoiador",
     price: 50,
-    benefits: ["Newsletter mensal", "Certificado de doador digital", "Nome no site (opcional)"],
+    benefits: ["Newsletter mensal do projeto", "Certificado de doador fundador", "Nome no mural de apoiadores do site"],
     color: "bg-blue-500"
   },
   {
-    name: "Padrinho",
+    name: "Padrinho do Pontapé Inicial",
     price: 100,
     recommended: true,
-    benefits: ["Todos os benefícios de Apoiador", "Relatórios de impacto trimestrais", "Vídeo de agradecimento", "Convite para eventos anuais"],
+    benefits: ["Todos os benefícios de Apoiador", "Relatórios de implantação trimestrais", "Vídeo de agradecimento dos fundadores", "Convite especial para a inauguração"],
     color: "bg-aba-orange"
   },
   {
-    name: "Mantenedor",
+    name: "Mantenedor Fundador",
     price: 300,
-    benefits: ["Todos os benefícios de Padrinho", "Encontros exclusivos com a diretoria", "Visita guiada à República", "Destaque especial nos relatórios"],
+    benefits: ["Todos os benefícios de Padrinho", "Encontros com a diretoria do projeto", "Visita à futura sede da República", "Destaque de honra nos relatórios sociais"],
     color: "bg-aba-green"
   }
 ];
 
 export const FAQS: FaqItem[] = [
   {
+    question: "O Projeto República já está com as portas abertas?",
+    answer: "A Associação Barnabé (ABA) atua há anos promovendo projetos e atendimentos sociais na comunidade. O Projeto República para Jovens em Transição está em fase de implantação e captação de recursos. Precisamos do seu apoio agora para dar o pontapé inicial e inaugurar a primeira casa em Gravataí/RS."
+  },
+  {
+    question: "O que significam os 150+ atendimentos sociais?",
+    answer: "Ao longo de sua trajetória comunitária, a Associação Barnabé já beneficiou mais de 150 crianças, jovens e famílias através de oficinas, eventos esportivos, doações de mantimentos e ações educativas em Gravataí. Agora, unimos essa experiência para fundar a República."
+  },
+  {
     question: "Como funciona o apadrinhamento?",
-    answer: "O apadrinhamento é uma doação recorrente mensal que nos ajuda a manter as despesas fixas das casas (água, luz, alimentação). Você pode escolher o valor que cabe no seu bolso."
+    answer: "O apadrinhamento é uma doação recorrente mensal que garante sustentabilidade para cobrir o aluguel da sede, mobília, alimentação e equipe multidisciplinar assim que a casa for inaugurada."
   },
   {
     question: "Para onde vai minha doação?",
-    answer: "100% dos recursos são destinados para a manutenção das Repúblicas, cobrindo aluguel, alimentação, cursos profissionalizantes e transporte dos jovens."
+    answer: "100% dos recursos são destinados para o fundo de implantação e manutenção da República, cobrindo adequação do espaço físico, contas básicas, alimentação e cursos profissionalizantes para os futuros residentes."
   },
   {
-    question: "Quem pode ser acolhido?",
-    answer: "Atendemos jovens que completam 18 anos e precisam sair de abrigos institucionais, sem rede de apoio familiar, que desejam estudar e trabalhar."
+    question: "Quem será acolhido quando a casa abrir?",
+    answer: "Atenderemos jovens de 18 a 21 anos que completam a maioridade em abrigos institucionais de Gravataí e região, sem suporte familiar, focados em estudar e trabalhar."
   },
   {
     question: "Como é feita a prestação de contas?",
-    answer: "Temos uma política de total transparência. Publicamos balancetes mensais e relatórios anuais em nossa página de Transparência, além de enviarmos aos doadores."
+    answer: "Temos uma política de total transparência. Publicamos relatórios financeiros e de progresso em nossa página de Transparência para que todos os padrinhos acompanhem o nascimento do projeto."
   }
 ];
 
@@ -177,22 +185,27 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 6,
-    slug: "inauguracao-nova-casa-republica-iii",
-    title: "Inauguração da Nova Casa República III",
-    excerpt: "Graças ao apoio dos nossos parceiros, conseguimos abrir mais 6 vagas para jovens mulheres.",
-    date: "15 Out, 2023",
-    isoDate: "2023-10-15",
-    category: "Conquistas",
+    slug: "campanha-pontape-inicial-republica",
+    title: "Campanha 'Pontapé Inicial': Mobilização para Inaugurar a Primeira República",
+    excerpt: "Associação Barnabé lança campanha de captação para viabilizar a estrutura física da primeira casa de transição em Gravataí.",
+    date: "15 Abr, 2024",
+    isoDate: "2024-04-15",
+    category: "Projetos",
     image: "https://images.unsplash.com/photo-1560523160-754a9e25c68f?auto=format&fit=crop&q=80&w=800",
     content: `
-      <p class="mb-4">É com imensa alegria e o coração transbordando de gratidão que compartilhamos a inauguração da nossa mais nova unidade: a <strong>República III</strong>. Este novo lar é destinado exclusivamente ao acolhimento de jovens mulheres egressas de abrigos, um público que historicamente enfrenta vulnerabilidades ainda mais severas nas ruas.</p>
+      <p class="mb-4">Com imensa esperança e determinação, a <strong>Associação Barnabé (ABA)</strong> dá início à campanha oficial de captação para o lançamento do <strong>Projeto República para Jovens em Transição</strong> em Gravataí/RS.</p>
       
-      <p class="mb-4">A casa, localizada em um bairro seguro e acessível de Gravataí, foi totalmente reformada por voluntários e parceiros da construção civil. São 3 quartos duplos, garantindo 6 novas vagas no nosso programa. O espaço conta com sala de estudos equipada com computadores, cozinha completa para incentivar a autonomia alimentar e um quintal para atividades de convivência.</p>
+      <p class="mb-4">O projeto visa alugar e equipar uma casa estruturada com capacidade inicial para acolher 12 jovens (6 masculinos e 6 femininos) que completam 18 anos em acolhimentos institucionais locais e não têm para onde ir.</p>
       
-      <h3 class="text-xl font-bold text-gray-800 mt-6 mb-3">O Impacto Imediato</h3>
-      <p class="mb-4">Todas as vagas já foram preenchidas por jovens que completaram 18 anos neste mês. Sem a República III, o destino dessas meninas seria incerto. Agora, elas têm um teto, segurança e, principalmente, uma rede de apoio para começarem seus estudos e carreiras.</p>
+      <h3 class="text-xl font-bold text-gray-800 mt-6 mb-3">O Que Precisamos para Dar o Pontapé Inicial</h3>
+      <p class="mb-4">Para abrir as portas e receber os primeiros jovens, estamos mobilizando voluntários, doadores individuais e empresas parceiras dispostas a contribuir com:</p>
+      <ul class="list-disc pl-5 mb-4 space-y-2">
+        <li><strong>Fundo de Reforma e Mobília:</strong> Camas, armários, eletrodomésticos e espaço para estudos.</li>
+        <li><strong>Apadrinhamento Mensal:</strong> Garantia de aluguel e custos fixos (água, luz, internet, alimentação).</li>
+        <li><strong>Acompanhamento Profissional:</strong> Voluntários de psicologia, assistência social e mentoria de carreira.</li>
+      </ul>
       
-      <p class="mb-4">Agradecemos profundamente à <em>Construtora Solidária</em> e a todos os padrinhos que tornaram este sonho possível. Cada tijolo assentado nesta casa representa a reconstrução de uma vida.</p>
+      <p class="mb-4">Junte-se a nós nesta causa urgente. A sua doação hoje é o alicerce da autonomia e dignidade dos nossos jovens amanhã.</p>
     `
   },
   {

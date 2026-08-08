@@ -112,8 +112,10 @@ const Home: React.FC = () => {
           animate="visible"
           className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 md:pt-16"
         >
-          <motion.div variants={itemVariants} className="block text-white text-sm font-bold tracking-[0.3em] uppercase mb-4 opacity-80">
-            Associação Barnabé
+          {/* Status Badge: Implantação e Pontapé Inicial */}
+          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 backdrop-blur-md text-amber-300 rounded-full text-xs sm:text-sm font-bold tracking-wide uppercase mb-6 border border-amber-400/30 shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            <span>Projeto em Fase de Implantação • Precisamos do seu apoio para o pontapé inicial</span>
           </motion.div>
 
           <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight drop-shadow-2xl">
@@ -129,17 +131,17 @@ const Home: React.FC = () => {
             </span>
           </motion.h1>
           <motion.p variants={itemVariants} className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md">
-            Oferecemos um lar seguro, afeto e oportunidades reais para jovens que completam 18 anos e precisam sair dos abrigos institucionais.
+            A Associação Barnabé está mobilizando parceiros e padrinhos para inaugurar a primeira Casa República em Gravataí/RS — um lar seguro e estruturado para jovens que saem de abrigos ao completarem 18 anos.
           </motion.p>
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link to="/doar">
               <Button size="lg" variant="secondary" className="shadow-2xl shadow-aba-orange/20 ring-4 ring-aba-orange/10">
-                <Heart className="mr-2 h-5 w-5 animate-pulse" /> Seja um Padrinho
+                <Heart className="mr-2 h-5 w-5 animate-pulse" /> Ajude no Pontapé Inicial
               </Button>
             </Link>
             <Link to="/projeto">
               <Button size="lg" variant="outline" className="text-white border-white/50 hover:border-white hover:bg-white hover:text-aba-blue bg-white/5 backdrop-blur-sm transition-all duration-300">
-                Conheça o Projeto
+                Conheça a República
               </Button>
             </Link>
           </motion.div>
@@ -230,16 +232,16 @@ const Home: React.FC = () => {
               <ScrollAnimation animation="slide-in-right" delay={200}>
                 <div className="inline-block px-3 py-1 bg-blue-100 text-aba-blue rounded-full text-sm font-semibold mb-4">Desde 2018</div>
                 <SectionTitle 
-                  title="Muito mais que uma casa" 
+                  title="Construindo a ponte para o futuro" 
                   subtitle="Quem Somos" 
                   centered={false} 
                 />
                 <article className="text-gray-600 text-lg mb-6 leading-relaxed text-justify">
                   <p className="mb-4">
-                    Imagine completar 18 anos e não ter para onde ir. Essa é a realidade de milhares de jovens que cresceram em abrigos. A <strong>Associação Barnabé (ABA)</strong> nasce para preencher esse vazio.
+                    A <strong>Associação Barnabé (ABA)</strong> possui uma trajetória consolidada em Gravataí/RS, somando mais de <strong>150 atendimentos e ações sociais na comunidade</strong> — promovendo oficinas, apoio familiar, doações e integração comunitária.
                   </p>
                   <p className="mb-8">
-                    Nosso projeto "República para Jovens" oferece uma <strong>família de transição</strong>. Em nossas casas em Gravataí, eles encontram segurança alimentar, suporte emocional e orientação profissional. Não damos apenas o peixe, ensinamos a pescar, gerir a renda e construir uma vida digna e autônoma.
+                    Agora, estamos dando o passo mais importante da nossa história: a implementação do projeto <strong>"República para Jovens"</strong>. O objetivo é criar uma moradia de transição com acompanhamento pedagógico e psicológico para jovens que completam 18 anos em acolhimentos institucionais locais. O projeto está em fase de captação de recursos e parcerias para dar o pontapé inicial e abrir sua primeira sede.
                   </p>
                 </article>
                 <div className="flex gap-4">
@@ -330,70 +332,70 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-aba-blue text-white relative overflow-hidden" aria-label="Depoimentos">
+      {/* Manifesto e Lideranças */}
+      <section className="py-24 bg-aba-blue text-white relative overflow-hidden" aria-label="Compromisso e Liderança">
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-aba-orange/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <SectionTitle title="Vidas Transformadas" subtitle="Depoimentos Reais" light />
+          <SectionTitle title="Unidos para Tirar Este Sonho do Papel" subtitle="Vozes da Causa" light />
           
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             <ScrollAnimation delay={0}>
-              <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl h-full">
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col">
                   <div className="flex space-x-1 text-aba-orange mb-6">
                     {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
                   </div>
-                  <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed">
-                    "Quando saí do abrigo, me senti perdido e com medo da rua. Na República, encontrei uma família e o apoio para terminar meus estudos. Hoje tenho meu emprego e aluguei meu lar."
+                  <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed flex-grow">
+                    "A Associação Barnabé atua há anos em prol da comunidade. Agora damos o passo mais ousado: criar a República para que nenhum jovem fique desamparado ao completar 18 anos. Precisamos do apoio de padrinhos e empresas para dar o pontapé inicial."
                   </blockquote>
                   <div className="flex items-center space-x-4 border-t border-white/20 pt-4 mt-auto">
                     <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                      <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100" alt="Foto de Lucas" className="w-full h-full object-cover" />
+                      <img src="https://lp.associacaobarnabe.org/robinson-associacao-barnabe.png" alt="Foto de Robinson Pereira" className="w-full h-full object-cover" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg">Lucas M.</h4>
-                      <p className="text-sm text-blue-200">Ex-morador, 22 anos</p>
+                      <h4 className="font-bold text-lg">Robinson Pereira</h4>
+                      <p className="text-sm text-blue-200">Presidente e Fundador da ABA</p>
                     </div>
                   </div>
               </div>
             </ScrollAnimation>
 
             <ScrollAnimation delay={200}>
-              <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform md:-translate-y-4 shadow-xl hover:-translate-y-6 hover:shadow-2xl h-full">
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform md:-translate-y-4 shadow-xl hover:-translate-y-6 hover:shadow-2xl h-full flex flex-col">
                   <div className="flex space-x-1 text-aba-orange mb-6">
                     {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
                   </div>
-                  <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed">
-                    "A ABA acreditou em mim quando ninguém mais acreditava. Aprendi a cozinhar, a cuidar do meu dinheiro e a acreditar no meu potencial. Sou eternamente grata."
+                  <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed flex-grow">
+                    "A transição para a vida adulta exige acolhimento, orientação e teto seguro. Nosso projeto pedagógico já está estruturado e pronto; estamos em busca de doadores para viabilizar as chaves da primeira casa."
                   </blockquote>
                   <div className="flex items-center space-x-4 border-t border-white/20 pt-4 mt-auto">
                      <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Foto de Júlia" className="w-full h-full object-cover" />
+                      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100" alt="Foto de Ana Silva" className="w-full h-full object-cover" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg">Júlia S.</h4>
-                      <p className="text-sm text-blue-200">Moradora atual, 19 anos</p>
+                      <h4 className="font-bold text-lg">Ana Silva</h4>
+                      <p className="text-sm text-blue-200">Coordenadora Pedagógica</p>
                     </div>
                   </div>
               </div>
             </ScrollAnimation>
 
             <ScrollAnimation delay={400}>
-              <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl h-full">
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col">
                   <div className="flex space-x-1 text-aba-orange mb-6">
                     {[...Array(5)].map((_, j) => <Star key={j} className="h-5 w-5 fill-current" />)}
                   </div>
-                  <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed">
-                    "Como voluntário, vejo de perto a seriedade do trabalho. Cada real doado é investido com responsabilidade para mudar o destino desses jovens."
+                  <blockquote className="mb-8 italic text-gray-100 text-lg leading-relaxed flex-grow">
+                    "Como profissional do terceiro setor, sei a falta imensa que uma moradia de transição faz para jovens que saem de abrigos. Cada doação neste momento é o alicerce concreto dessa conquista."
                   </blockquote>
                   <div className="flex items-center space-x-4 border-t border-white/20 pt-4 mt-auto">
                      <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100" alt="Foto de Roberto" className="w-full h-full object-cover" />
+                      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100" alt="Foto de Carlos Santos" className="w-full h-full object-cover" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg">Roberto F.</h4>
-                      <p className="text-sm text-blue-200">Mantenedor há 3 anos</p>
+                      <h4 className="font-bold text-lg">Carlos Santos</h4>
+                      <p className="text-sm text-blue-200">Assistente Social e Voluntário</p>
                     </div>
                   </div>
               </div>
