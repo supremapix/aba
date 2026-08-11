@@ -115,10 +115,10 @@ const Donate: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold font-serif mb-6 drop-shadow-lg">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold font-serif mb-4 sm:mb-6 drop-shadow-lg">
               Transforme <span className="text-aba-darkBlue">Vidas</span>
             </h1>
-            <p className="text-xl md:text-2xl text-orange-50 max-w-3xl mx-auto leading-relaxed font-light mb-8">
+            <p className="text-sm sm:text-lg md:text-2xl text-orange-50 max-w-3xl mx-auto leading-relaxed font-light mb-6 sm:mb-8">
               Sua doação não é apenas dinheiro; é a oportunidade de um futuro digno para um jovem. Escolha como você quer mudar o mundo hoje.
             </p>
             <motion.div

@@ -148,7 +148,7 @@ export const FloatingActions: React.FC = () => {
   return (
     <>
       {/* 1. BOTÃO DE COMPARTILHAMENTO FLUTUANTE (CANTO INFERIOR ESQUERDO) */}
-      <div className="fixed bottom-6 left-6 z-50 flex flex-col items-start">
+      <div className="fixed bottom-3 left-3 sm:bottom-6 sm:left-6 z-50 flex flex-col items-start">
         {/* Share Modal Menu */}
         <AnimatePresence>
           {isShareOpen && (
@@ -157,12 +157,12 @@ export const FloatingActions: React.FC = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 15, scale: 0.9 }}
               transition={{ duration: 0.2 }}
-              className="mb-4 bg-white/90 backdrop-blur-md border border-gray-200/80 rounded-2xl shadow-2xl p-5 w-72 sm:w-80 relative overflow-hidden"
+              className="mb-3 bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-2xl shadow-2xl p-4 w-[calc(100vw-2rem)] max-w-[290px] sm:w-80 relative overflow-hidden"
             >
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100">
-                <div className="flex items-center gap-2 text-aba-blue font-bold text-sm">
+              <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-gray-100">
+                <div className="flex items-center gap-1.5 text-aba-blue font-bold text-xs sm:text-sm">
                   <Sparkles className="w-4 h-4 text-aba-orange" />
-                  <span>Compartilhar Esta Página</span>
+                  <span>Compartilhar Página</span>
                 </div>
                 <button
                   onClick={() => setIsShareOpen(false)}
@@ -173,23 +173,23 @@ export const FloatingActions: React.FC = () => {
                 </button>
               </div>
 
-              <p className="text-xs text-gray-500 mb-4">
-                Ajude a espalhar a causa da Associação Barnabé em suas redes sociais:
+              <p className="text-[11px] sm:text-xs text-gray-500 mb-3 leading-snug">
+                Ajude a espalhar a causa da Associação Barnabé nas redes:
               </p>
 
               {/* Grid of Social Share Buttons */}
-              <div className="grid grid-cols-3 gap-2.5 mb-4">
+              <div className="grid grid-cols-3 gap-2 mb-3">
                 {shareLinks.map((item) => (
                   <a
                     key={item.name}
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex flex-col items-center justify-center p-2.5 rounded-xl transition-transform hover:scale-105 shadow-sm text-xs font-semibold gap-1.5 ${item.color}`}
+                    className={`flex flex-col items-center justify-center p-2 rounded-xl transition-transform hover:scale-105 shadow-sm text-xs font-semibold gap-1 ${item.color}`}
                     title={`Compartilhar no ${item.name}`}
                   >
                     <item.icon />
-                    <span className="text-[10px] leading-none">{item.name}</span>
+                    <span className="text-[9px] leading-none">{item.name}</span>
                   </a>
                 ))}
               </div>
@@ -198,7 +198,7 @@ export const FloatingActions: React.FC = () => {
               <div className="pt-2 border-t border-gray-100">
                 <button
                   onClick={handleCopyLink}
-                  className={`w-full py-2.5 px-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
+                  className={`w-full py-2 px-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
                     copied
                       ? 'bg-emerald-500 text-white border-emerald-500 shadow-md'
                       : 'bg-gray-50 hover:bg-gray-100 text-gray-800 border-gray-200'
@@ -206,12 +206,12 @@ export const FloatingActions: React.FC = () => {
                 >
                   {copied ? (
                     <>
-                      <Check className="w-4 h-4 animate-bounce" />
-                      <span>Link Copiado com Sucesso!</span>
+                      <Check className="w-3.5 h-3.5 animate-bounce" />
+                      <span>Link Copiado!</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-4 h-4 text-aba-blue" />
+                      <Copy className="w-3.5 h-3.5 text-aba-blue" />
                       <span>Copiar Link da Página</span>
                     </>
                   )}
@@ -230,11 +230,11 @@ export const FloatingActions: React.FC = () => {
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
             onClick={() => setIsShareOpen(!isShareOpen)}
-            className="relative bg-white text-aba-blue p-3.5 rounded-full shadow-2xl border border-blue-100 flex items-center justify-center gap-2 group transition-colors"
+            className="relative bg-white text-aba-blue p-2.5 sm:p-3.5 rounded-full shadow-2xl border border-blue-100 flex items-center justify-center gap-2 group transition-colors"
             aria-label="Compartilhar página"
           >
-            <Share2 className="w-6 h-6 text-aba-blue transition-transform group-hover:rotate-12" />
-            <span className="hidden sm:inline-block font-bold text-xs pr-1 text-gray-800">
+            <Share2 className="w-5 h-5 sm:w-6 sm:h-6 text-aba-blue transition-transform group-hover:rotate-12" />
+            <span className="hidden md:inline-block font-bold text-xs pr-1 text-gray-800">
               Compartilhar
             </span>
           </motion.button>
@@ -242,23 +242,23 @@ export const FloatingActions: React.FC = () => {
       </div>
 
       {/* 2. BOTÕES DE CONTATO RÁPIDO E VOLTAR AO TOPO (CANTO INFERIOR DIREITO) */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-none">
-        <div className="flex flex-col items-end gap-2.5 pointer-events-auto">
+      <div className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2.5 pointer-events-none">
+        <div className="flex flex-col items-end gap-2 pointer-events-auto">
           {/* Button: Ligar Agora */}
           <motion.a
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             href={`tel:${CONTACT_INFO.phone.replace(/[^0-9]/g, '')}`}
-            className="group relative flex items-center gap-2.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-aba-darkBlue hover:from-blue-700 hover:to-indigo-800 text-white px-4 py-3 rounded-full shadow-xl transition-all duration-300 hover:scale-105 border border-white/20"
+            className="group relative flex items-center gap-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-aba-darkBlue hover:from-blue-700 hover:to-indigo-800 text-white px-3 py-2 sm:px-4 sm:py-2.5 rounded-full shadow-xl transition-all duration-300 hover:scale-105 border border-white/20"
             aria-label="Ligar Agora"
           >
             <div className="relative flex items-center justify-center">
               <span className="absolute -inset-1 rounded-full bg-white/30 animate-ping opacity-75"></span>
-              <Phone className="w-5 h-5 text-amber-300 transform group-hover:rotate-12 transition-transform" />
+              <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300 transform group-hover:rotate-12 transition-transform" />
             </div>
             <span className="font-bold text-xs tracking-wide hidden sm:inline-block">
-              Ligar Agora
+              Ligar
             </span>
           </motion.a>
 
@@ -270,23 +270,23 @@ export const FloatingActions: React.FC = () => {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex items-center gap-3 bg-gradient-to-r from-emerald-500 via-green-600 to-teal-700 hover:from-emerald-600 hover:to-teal-800 text-white px-4 py-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 border border-white/30"
+            className="group relative flex items-center gap-2 sm:gap-2.5 bg-gradient-to-r from-emerald-500 via-green-600 to-teal-700 hover:from-emerald-600 hover:to-teal-800 text-white px-3 py-2 sm:px-4 sm:py-2.5 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 border border-white/30"
             aria-label="Atendimento WhatsApp 24h"
           >
             {/* Blinking Online Green Dot */}
             <div className="relative flex items-center justify-center">
-              <span className="absolute w-3 h-3 rounded-full bg-emerald-300 animate-ping opacity-75"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-300 relative z-10 border border-white"></span>
+              <span className="absolute w-2.5 h-2.5 rounded-full bg-emerald-300 animate-ping opacity-75"></span>
+              <span className="w-2 h-2 rounded-full bg-emerald-300 relative z-10 border border-white"></span>
             </div>
 
-            <MessageCircle className="w-6 h-6 text-white transform group-hover:scale-110 transition-transform" />
+            <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white transform group-hover:scale-110 transition-transform" />
 
-            <div className="flex flex-col text-left pr-1">
-              <span className="text-[10px] font-bold text-emerald-100 uppercase tracking-wider leading-none">
-                Online Agora
+            <div className="flex flex-col text-left pr-0.5">
+              <span className="text-[9px] sm:text-[10px] font-bold text-emerald-100 uppercase tracking-wider leading-none">
+                Online
               </span>
-              <span className="text-xs font-extrabold text-white leading-tight">
-                WhatsApp 24h
+              <span className="text-[11px] sm:text-xs font-extrabold text-white leading-tight">
+                WhatsApp
               </span>
             </div>
           </motion.a>
@@ -301,11 +301,11 @@ export const FloatingActions: React.FC = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={scrollToTop}
-                className="bg-white/90 backdrop-blur-md hover:bg-white text-aba-blue p-3 rounded-full shadow-xl border border-gray-200 transition-colors flex items-center justify-center mt-1"
+                className="bg-white/90 backdrop-blur-md hover:bg-white text-aba-blue p-2 sm:p-2.5 rounded-full shadow-xl border border-gray-200 transition-colors flex items-center justify-center mt-0.5"
                 aria-label="Voltar ao topo da página"
                 title="Voltar ao topo"
               >
-                <ArrowUp className="w-5 h-5 text-aba-orange stroke-[2.5]" />
+                <ArrowUp className="w-4 h-4 text-aba-orange stroke-[2.5]" />
               </motion.button>
             )}
           </AnimatePresence>

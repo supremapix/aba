@@ -52,10 +52,10 @@ const About: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <h1 className="text-4xl md:text-6xl font-bold text-white font-serif mb-6 drop-shadow-lg tracking-tight">
+              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white font-serif mb-4 sm:mb-6 drop-shadow-lg tracking-tight">
                 Acolher vidas. <span className="text-aba-orange">Construir futuros.</span> Transformar histórias.
               </h1>
-              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-sm sm:text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light">
                 Quando o abrigo termina, o futuro não pode terminar junto. A Associação Barnabé é a ponte entre o acolhimento institucional e a independência da vida adulta.
               </p>
             </motion.div>

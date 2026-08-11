@@ -92,7 +92,7 @@ const Home: React.FC = () => {
         schema={orgSchema}
       />
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden" aria-label="Introdução">
+      <section className="relative min-h-[85vh] sm:min-h-screen py-20 sm:py-28 flex items-center justify-center overflow-hidden" aria-label="Introdução">
         <div className="absolute inset-0 z-0">
           <motion.img 
             initial={{ scale: 1.1 }}
@@ -110,50 +110,50 @@ const Home: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 md:pt-16"
+          className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 sm:pt-12 pb-8 sm:pb-12"
         >
           {/* Status Badge: Implantação e Pontapé Inicial */}
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 backdrop-blur-md text-amber-300 rounded-full text-xs sm:text-sm font-bold tracking-wide uppercase mb-6 border border-amber-400/30 shadow-lg">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-            <span>Projeto em Fase de Implantação • Precisamos do seu apoio para o pontapé inicial</span>
+          <motion.div variants={itemVariants} className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-amber-500/20 backdrop-blur-md text-amber-300 rounded-full text-[11px] sm:text-xs font-bold tracking-wide uppercase mb-4 sm:mb-6 border border-amber-400/30 shadow-lg max-w-full">
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping flex-shrink-0"></span>
+            <span className="truncate sm:whitespace-normal">Em Implantação • Precisamos do seu apoio</span>
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight drop-shadow-2xl">
-            Preparando jovens <br />
+          <motion.h1 variants={itemVariants} className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 font-serif leading-tight drop-shadow-2xl">
+            Preparando jovens <br className="hidden sm:inline" />
             <span className="text-aba-orange inline-block relative">
               para voar alto
               <motion.span 
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
                 transition={{ delay: 1.2, duration: 0.8 }}
-                className="absolute bottom-1 left-0 h-1.5 bg-aba-orange/30 rounded-full"
+                className="absolute bottom-1 left-0 h-1 sm:h-1.5 bg-aba-orange/30 rounded-full"
               />
             </span>
           </motion.h1>
-          <motion.p variants={itemVariants} className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md">
-            A Associação Barnabé está mobilizando parceiros e padrinhos para inaugurar a primeira Casa República em Gravataí/RS — um lar seguro e estruturado para jovens que saem de abrigos ao completarem 18 anos.
+          <motion.p variants={itemVariants} className="text-sm sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+            A Associação Barnabé está mobilizando parceiros e padrinhos para inaugurar a primeira Casa República em Gravataí/RS — um lar seguro para jovens que saem de abrigos aos 18 anos.
           </motion.p>
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6 justify-center">
+          <motion.div variants={itemVariants} className="flex flex-row flex-wrap gap-2.5 sm:gap-4 justify-center items-center">
             <Link to="/doar">
-              <Button size="lg" variant="secondary" className="shadow-2xl shadow-aba-orange/20 ring-4 ring-aba-orange/10">
-                <Heart className="mr-2 h-5 w-5 animate-pulse" /> Ajude no Pontapé Inicial
+              <Button size="md" variant="secondary" className="shadow-xl shadow-aba-orange/20 text-xs sm:text-sm px-4 py-2 sm:px-6 sm:py-3">
+                <Heart className="mr-1.5 h-4 w-4 animate-pulse" /> Apoie o Projeto
               </Button>
             </Link>
             <Link to="/projeto">
-              <Button size="lg" variant="outline" className="text-white border-white/50 hover:border-white hover:bg-white hover:text-aba-blue bg-white/5 backdrop-blur-sm transition-all duration-300">
-                Conheça a República
+              <Button size="md" variant="outline" className="text-white border-white/50 hover:border-white hover:bg-white hover:text-aba-blue bg-white/5 backdrop-blur-sm transition-all duration-300 text-xs sm:text-sm px-4 py-2 sm:px-6 sm:py-3">
+                Conhecer Projeto
               </Button>
             </Link>
           </motion.div>
         </motion.div>
         
         <motion.div 
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 1, repeat: Infinity, repeatType: "mirror" }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70"
+          className="hidden md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/70 pointer-events-none"
         >
-          <ChevronRight className="h-10 w-10 rotate-90" />
+          <ChevronRight className="h-8 w-8 rotate-90" />
         </motion.div>
       </section>
 

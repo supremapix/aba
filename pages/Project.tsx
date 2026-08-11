@@ -30,31 +30,31 @@ const Project: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-aba-darkBlue to-aba-blue"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-4 sm:py-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 backdrop-blur-md text-amber-300 rounded-full text-xs sm:text-sm font-bold tracking-wide uppercase mb-6 border border-amber-400/30 shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-              <span>Projeto em Fase de Implantação • Buscando Padrinhos e Parceiros para o Pontapé Inicial</span>
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-amber-500/20 backdrop-blur-md text-amber-300 rounded-full text-[11px] sm:text-xs font-bold tracking-wide uppercase mb-4 sm:mb-6 border border-amber-400/30 shadow-lg max-w-full">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping flex-shrink-0"></span>
+              <span className="truncate sm:whitespace-normal">Em Implantação • Buscando Padrinhos e Parceiros</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif mb-6 text-white leading-tight max-w-4xl mx-auto">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-serif mb-4 sm:mb-6 text-white leading-tight max-w-4xl mx-auto">
               Quando o abrigo termina, <span className="text-aba-orange underline decoration-aba-orange/30 underline-offset-8">o futuro não pode terminar junto.</span>
             </h1>
-            <p className="text-lg md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-light mb-8">
+            <p className="text-sm sm:text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-light mb-6 sm:mb-8">
               Uma ponte segura e estruturada entre a proteção institucional e a independência da vida adulta.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-row flex-wrap justify-center gap-2.5 sm:gap-4 items-center">
               <Link to="/doar">
-                <Button variant="primary" size="lg" className="shadow-lg">
-                  Seja um Padrinho / Madrinha
+                <Button variant="primary" size="md" className="shadow-lg text-xs sm:text-sm px-4 py-2 sm:px-6 sm:py-2.5">
+                  Apoie o Projeto
                 </Button>
               </Link>
               <Link to="/contato">
-                <Button variant="secondary" size="lg" className="bg-white/10 text-white border-white/30 hover:bg-white/20">
-                  Parcerias Empresariais
+                <Button variant="secondary" size="md" className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-xs sm:text-sm px-4 py-2 sm:px-6 sm:py-2.5">
+                  Seja Parceiro
                 </Button>
               </Link>
             </div>
