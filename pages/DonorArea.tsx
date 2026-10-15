@@ -13,6 +13,7 @@ const DonorArea: React.FC = () => {
       <SEO 
         title={isLogin ? "Área do Doador - Login" : "Cadastro de Doador"} 
         description="Acesse a área restrita para doadores da Associação Barnabé. Visualize seus recibos e relatórios exclusivos."
+        noindex={true}
       />
       <motion.div 
         initial={{ opacity: 0, y: 20 }}

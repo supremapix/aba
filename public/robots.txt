@@ -1,0 +1,39 @@
+User-agent: *
+Allow: /
+Disallow: /login
+
+User-agent: GPTBot
+Allow: /
+Disallow: /login
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /login
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /login
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /login
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /login
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /login
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /login
+
+User-agent: Bingbot
+Allow: /
+Disallow: /login
+
+User-agent: Applebot
+Allow: /
+Disallow: /login

@@ -7,17 +7,19 @@ interface SEOProps {
   schema?: object;
   image?: string;
   type?: string;
+  noindex?: boolean;
 }
 
 const SEO: React.FC<SEOProps> = ({ 
   title, 
   description, 
   schema,
-  image = "https://associacaobarnabe.org/og-image.jpg", // Placeholder
-  type = "website"
+  image = "https://www.associacaobarnabe.org/og-image.jpg", 
+  type = "website",
+  noindex = false
 }) => {
   const location = useLocation();
-  const canonicalUrl = `https://associacaobarnabe.org${location.pathname}`;
+  const canonicalUrl = `https://www.associacaobarnabe.org${location.pathname === '/' ? '' : location.pathname}`;
   const siteName = "ABA - Associação Barnabé";
   const fullTitle = `${title} | ${siteName}`;
 
@@ -38,6 +40,13 @@ const SEO: React.FC<SEOProps> = ({
 
     setMetaTag('description', description);
     
+    // Robots
+    if (noindex) {
+        setMetaTag('robots', 'noindex,nofollow');
+    } else {
+        setMetaTag('robots', 'index,follow');
+    }
+    
     // Open Graph
     setMetaTag('og:title', fullTitle, 'property');
     setMetaTag('og:description', description, 'property');
@@ -45,6 +54,12 @@ const SEO: React.FC<SEOProps> = ({
     setMetaTag('og:type', type, 'property');
     setMetaTag('og:image', image, 'property');
     setMetaTag('og:site_name', siteName, 'property');
+    
+    // Twitter Cards
+    setMetaTag('twitter:card', 'summary_large_image');
+    setMetaTag('twitter:title', fullTitle);
+    setMetaTag('twitter:description', description);
+    setMetaTag('twitter:image', image);
 
     // Canonical Link
     let link = document.querySelector("link[rel='canonical']");
@@ -59,21 +74,15 @@ const SEO: React.FC<SEOProps> = ({
     if (schema) {
       const scriptId = 'json-ld-schema';
       let script = document.getElementById(scriptId);
-      if (script) {
-        script.textContent = JSON.stringify(schema);
-      } else {
+      if (!script) {
         script = document.createElement('script');
         script.id = scriptId;
         script.setAttribute('type', 'application/ld+json');
-        script.textContent = JSON.stringify(schema);
         document.head.appendChild(script);
       }
+      script.textContent = JSON.stringify(schema);
     }
-
-    return () => {
-      // Cleanup opcional se necessário
-    };
-  }, [fullTitle, description, canonicalUrl, schema, image, type]);
+  }, [fullTitle, description, canonicalUrl, schema, image, type, noindex]);
 
   return null;
 };
