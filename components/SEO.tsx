@@ -14,7 +14,7 @@ const SEO: React.FC<SEOProps> = ({
   title, 
   description, 
   schema,
-  image = "https://www.associacaobarnabe.org/og-image.jpg", 
+  image = "https://www.associacaobarnabe.org/images/og-image.jpg", 
   type = "website",
   noindex = false
 }) => {

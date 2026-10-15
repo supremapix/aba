@@ -41,8 +41,8 @@ const LocationDetail: React.FC = () => {
         <div className="absolute inset-0 opacity-20">
           <img 
             src={isBairro 
-              ? "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=1920" 
-              : "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1920"
+              ? "/images/localidades/bairro.webp" 
+              : "/images/localidades/cidade.webp"
             }
             alt={area.name} 
             className="w-full h-full object-cover"
@@ -109,7 +109,7 @@ const LocationDetail: React.FC = () => {
             >
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800" 
+                  src="/images/localidades/conversa.webp" 
                   alt="Jovens conversando"
                   className="rounded-3xl shadow-2xl relative z-10"
                 />
