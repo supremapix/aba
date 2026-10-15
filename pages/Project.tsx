@@ -23,7 +23,7 @@ const Project: React.FC = () => {
       <section className="relative py-24 bg-aba-blue overflow-hidden" role="banner">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=1920" 
+            src="/images/projeto/hero.webp" 
             alt="Jovens reunidos em ambiente acolhedor" 
             className="w-full h-full object-cover"
           />

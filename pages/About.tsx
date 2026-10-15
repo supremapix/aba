@@ -19,8 +19,8 @@ const About: React.FC = () => {
       <section className="relative py-24 bg-slate-900 overflow-hidden" role="banner">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1920" 
-            alt="Background" 
+            src="/images/sobre/hero.webp" 
+            alt="Voluntários da Associação Barnabé em reunião de planejamento" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-aba-blue mix-blend-multiply"></div>
@@ -143,13 +143,13 @@ const About: React.FC = () => {
                 <div className="grid grid-cols-2 gap-4 relative">
                   <div className="absolute inset-0 bg-aba-orange/10 rounded-full blur-3xl -z-10" aria-hidden="true"></div>
                   <img 
-                    src="https://images.unsplash.com/photo-1544642899-f0d6e5f6ed6f?auto=format&fit=crop&q=80&w=400" 
+                    src="/images/sobre/mentoria.webp" 
                     className="rounded-lg shadow-xl mt-8 hover:scale-105 transition-transform duration-500 object-cover h-64 w-full" 
                     alt="Sessão de mentoria em grupo com jovens da ONG" 
                     loading="lazy"
                   />
                   <img 
-                    src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=400" 
+                    src="/images/sobre/voluntarios.webp" 
                     className="rounded-lg shadow-xl mb-8 hover:scale-105 transition-transform duration-500 object-cover h-64 w-full" 
                     alt="Voluntários da Associação Barnabé trabalhando juntos" 
                     loading="lazy"
@@ -179,15 +179,15 @@ const About: React.FC = () => {
             <ScrollAnimation delay={100}>
               <div className="p-6 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm">
                 <Award className="h-10 w-10 text-aba-green mx-auto mb-4" aria-hidden="true" />
-                <div className="text-4xl font-bold mb-2">95%</div>
-                <p className="text-gray-300">De inserção no mercado de trabalho</p>
+                <div className="text-4xl font-bold mb-2">—</div>
+                <p className="text-gray-300">De inserção no mercado de trabalho {/* TODO: número real a confirmar com a ONG. Não inventar. */}</p>
               </div>
             </ScrollAnimation>
             <ScrollAnimation delay={200}>
               <div className="p-6 border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm">
                 <Users className="h-10 w-10 text-aba-blue mx-auto mb-4" aria-hidden="true" />
-                <div className="text-4xl font-bold mb-2">100%</div>
-                <p className="text-gray-300">Conclusão do Ensino Médio</p>
+                <div className="text-4xl font-bold mb-2">—</div>
+                <p className="text-gray-300">Conclusão do Ensino Médio {/* TODO: número real a confirmar com a ONG. Não inventar. */}</p>
               </div>
             </ScrollAnimation>
             <ScrollAnimation delay={300}>
@@ -216,8 +216,14 @@ const About: React.FC = () => {
             {TEAM.map((member, idx) => (
               <ScrollAnimation key={idx} delay={idx * 150}>
                 <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow text-center group border border-gray-100 h-full">
-                  <div className="relative w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-100 group-hover:border-aba-blue transition-colors">
-                    <img src={member.image} alt={`Foto de ${member.name}`} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                  <div className="relative w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-100 group-hover:border-aba-blue transition-colors bg-aba-blue/10 flex items-center justify-center">
+                    {member.image ? (
+                      <img src={member.image} alt={`Foto de ${member.name}`} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                    ) : (
+                      <span className="text-4xl font-bold text-aba-blue" aria-label={`Foto de ${member.name} (aguardando foto real)`}>
+                        {member.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+                      </span>
+                    )}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
                   <p className="text-aba-blue font-medium mb-3">{member.role}</p>

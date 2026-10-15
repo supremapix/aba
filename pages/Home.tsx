@@ -98,7 +98,7 @@ const Home: React.FC = () => {
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
             transition={{ duration: 10, repeat: Infinity, repeatType: "mirror", ease: "linear" }}
-            src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&q=80&w=1920" 
+            src="/images/home/hero.webp" 
             alt="Grupo diverso de jovens abraçados e sorrindo, representando a união da juventude" 
             className="w-full h-full object-cover"
           />
@@ -217,7 +217,7 @@ const Home: React.FC = () => {
               <ScrollAnimation animation="slide-in-left">
                 <div className="absolute top-4 left-4 w-full h-full border-2 border-aba-orange rounded-lg transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&q=80&w=800" 
+                  src="/images/home/roda-conversa.webp" 
                   alt="Roda de conversa de acolhimento com jovens e voluntários da ABA" 
                   className="relative rounded-lg shadow-2xl z-10 w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   loading="lazy"
@@ -370,9 +370,9 @@ const Home: React.FC = () => {
                     "A transição para a vida adulta exige acolhimento, orientação e teto seguro. Nosso projeto pedagógico já está estruturado e pronto; estamos em busca de doadores para viabilizar as chaves da primeira casa."
                   </blockquote>
                   <div className="flex items-center space-x-4 border-t border-white/20 pt-4 mt-auto">
-                     <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100" alt="Foto de Ana Silva" className="w-full h-full object-cover" />
-                    </div>
+                     <div className="w-12 h-12 rounded-full bg-aba-blue/30 border-2 border-aba-orange flex items-center justify-center text-white font-bold text-sm" aria-label="Foto de Ana Silva (aguardando foto real)">
+                       AS
+                     </div>
                     <div>
                       <h4 className="font-bold text-lg">Ana Silva</h4>
                       <p className="text-sm text-blue-200">Coordenadora Pedagógica</p>
@@ -390,9 +390,9 @@ const Home: React.FC = () => {
                     "Como profissional do terceiro setor, sei a falta imensa que uma moradia de transição faz para jovens que saem de abrigos. Cada doação neste momento é o alicerce concreto dessa conquista."
                   </blockquote>
                   <div className="flex items-center space-x-4 border-t border-white/20 pt-4 mt-auto">
-                     <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-aba-orange">
-                      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100" alt="Foto de Carlos Santos" className="w-full h-full object-cover" />
-                    </div>
+                     <div className="w-12 h-12 rounded-full bg-aba-blue/30 border-2 border-aba-orange flex items-center justify-center text-white font-bold text-sm" aria-label="Foto de Carlos Santos (aguardando foto real)">
+                       CS
+                     </div>
                     <div>
                       <h4 className="font-bold text-lg">Carlos Santos</h4>
                       <p className="text-sm text-blue-200">Assistente Social e Voluntário</p>
