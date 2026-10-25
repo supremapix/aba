@@ -53,7 +53,7 @@ const BlogPostDetail: React.FC = () => {
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://associacaobarnabe.org/blog/${post.slug}`
+      "@id": `https://www.associacaobarnabe.org/blog/${post.slug}`
     },
     "headline": post.title,
     "description": post.excerpt,
@@ -61,14 +61,14 @@ const BlogPostDetail: React.FC = () => {
     "author": {
       "@type": "Organization",
       "name": "Associação Barnabé",
-      "url": "https://associacaobarnabe.org"
+      "url": "https://www.associacaobarnabe.org"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Associação Barnabé",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://associacaobarnabe.org/logo.png"
+        "url": "https://www.associacaobarnabe.org/logo.png"
       }
     },
     "datePublished": post.isoDate,

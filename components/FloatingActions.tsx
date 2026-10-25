@@ -100,7 +100,7 @@ export const FloatingActions: React.FC = () => {
   };
 
   // Generate dynamic share URLs
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://associacaobarnabe.org';
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://www.associacaobarnabe.org';
   const title = typeof document !== 'undefined' ? document.title : 'Associação Barnabé - ABA';
   const encodedUrl = encodeURIComponent(currentUrl);
   const encodedTitle = encodeURIComponent(title);

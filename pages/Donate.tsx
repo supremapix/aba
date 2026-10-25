@@ -84,7 +84,7 @@ const Donate: React.FC = () => {
     "@type": "DonateAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://associacaobarnabe.org/doar",
+      "urlTemplate": "https://www.associacaobarnabe.org/doar",
       "inLanguage": "pt-BR",
       "actionPlatform": [
         "http://schema.org/DesktopWebPlatform",

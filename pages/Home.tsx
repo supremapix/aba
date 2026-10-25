@@ -36,8 +36,8 @@ const Home: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "NGO",
     "name": "Associação Barnabé",
-    "url": "https://associacaobarnabe.org",
-    "logo": "https://associacaobarnabe.org/logo.png",
+    "url": "https://www.associacaobarnabe.org",
+    "logo": "https://www.associacaobarnabe.org/logo.png",
     "description": "Transformando vidas através do acolhimento e preparação para o futuro de jovens em Gravataí/RS.",
     "address": {
       "@type": "PostalAddress",
