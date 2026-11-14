@@ -1,98 +1,31 @@
-import React, { useState } from 'react';
-import Button from '../components/Button';
-import { Heart, Lock } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { MessageCircle } from 'lucide-react';
 import SEO from '../components/SEO';
-import { motion } from 'motion/react';
 import { Logo } from '../components/Logo';
+import { CONTACT_INFO, WHATSAPP_URL } from '../constants';
 
-const DonorArea: React.FC = () => {
-  const [isLogin, setIsLogin] = useState(true);
-
-  return (
-    <div className="pt-20 min-h-screen bg-gray-50 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <SEO 
-        title={isLogin ? "Área do Doador - Login" : "Cadastro de Doador"} 
-        description="Acesse a área restrita para doadores da Associação Barnabé. Visualize seus recibos e relatórios exclusivos."
-        noindex={true}
-      />
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-md w-full space-y-8 bg-white p-10 rounded-[2.5rem] shadow-2xl border border-gray-100"
-      >
-        <div className="text-center">
-          <motion.div 
-            whileHover={{ scale: 1.1, rotate: 10 }}
-            whileTap={{ scale: 0.9, rotate: -10 }}
-            className="mx-auto h-24 w-24 bg-blue-50 rounded-full flex items-center justify-center mb-6 shadow-inner relative group"
-          >
-            <Logo size="md" showText={false} />
-            <div className="absolute inset-0 bg-aba-blue/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-          </motion.div>
-          <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
-            {isLogin ? 'Área do Doador' : 'Criar Conta'}
-          </h2>
-          <p className="mt-2 text-sm text-gray-600">
-            {isLogin 
-              ? 'Acesse para ver seus recibos e relatórios.' 
-              : 'Junte-se a nós e transforme vidas.'}
-          </p>
-        </div>
-        
-        <form className="mt-8 space-y-6" onSubmit={(e) => e.preventDefault()}>
-          <div className="rounded-md shadow-sm -space-y-px">
-            {!isLogin && (
-              <div>
-                <label htmlFor="name" className="sr-only">Nome Completo</label>
-                <input id="name" name="name" type="text" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-aba-blue focus:border-aba-blue focus:z-10 sm:text-sm" placeholder="Nome Completo" />
-              </div>
-            )}
-            <div>
-              <label htmlFor="email-address" className="sr-only">E-mail</label>
-              <input id="email-address" name="email" type="email" autoComplete="email" required className={`appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 ${isLogin ? 'rounded-t-md' : ''} focus:outline-none focus:ring-aba-blue focus:border-aba-blue focus:z-10 sm:text-sm`} placeholder="Endereço de e-mail" />
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">Senha</label>
-              <input id="password" name="password" type="password" autoComplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-aba-blue focus:border-aba-blue focus:z-10 sm:text-sm" placeholder="Senha" />
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between">
-            {isLogin && (
-              <>
-                <div className="flex items-center">
-                  <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 text-aba-blue focus:ring-aba-blue border-gray-300 rounded" />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">Lembrar-me</label>
-                </div>
-                <div className="text-sm">
-                  <a href="#" className="font-medium text-aba-blue hover:text-aba-darkBlue">Esqueceu a senha?</a>
-                </div>
-              </>
-            )}
-          </div>
-
-          <div>
-            <Button type="submit" fullWidth className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-aba-blue hover:bg-aba-darkBlue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-aba-blue">
-              <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                <Lock className="h-5 w-5 text-blue-300 group-hover:text-blue-200" aria-hidden="true" />
-              </span>
-              {isLogin ? 'Entrar' : 'Cadastrar'}
-            </Button>
-          </div>
-        </form>
-
-        <div className="text-center mt-4">
-          <button 
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-sm text-gray-600 hover:text-aba-blue font-medium"
-          >
-            {isLogin ? 'Não tem uma conta? Cadastre-se' : 'Já é doador? Faça login'}
-          </button>
-        </div>
-      </motion.div>
-    </div>
-  );
-};
-
+const DonorArea: React.FC = () => (
+  <div className="pt-20 min-h-screen bg-gray-50 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <SEO title="Atendimento ao Doador" description="Fale com a Associação Barnabé para consultar recibos, informações sobre sua contribuição e relatórios disponíveis." noindex={true} />
+    <section className="max-w-xl w-full space-y-6 bg-white p-6 sm:p-10 rounded-3xl shadow-lg border border-gray-100" aria-labelledby="doador-titulo">
+      <div className="flex justify-center"><Logo size="md" showText={false} /></div>
+      <h1 id="doador-titulo" className="text-3xl font-extrabold text-gray-900 font-serif text-center">Atendimento ao Doador</h1>
+      <p className="text-gray-600">Esta página não oferece acesso a uma conta nem cadastro com senha. Para consultar recibos, informações sobre sua contribuição ou relatórios disponíveis, converse diretamente com a equipe da Associação Barnabé.</p>
+      <div className="rounded-xl bg-blue-50 p-5 text-gray-700">
+        <h2 className="font-bold text-aba-blue mb-2">Como pedir orientação</h2>
+        <p>Diga se precisa de um recibo, de informações sobre uma contribuição ou de conhecer as formas de apoio. A equipe informa quais dados são necessários e como dar continuidade ao atendimento.</p>
+        <p className="mt-3">Não envie senhas, dados completos de cartão ou documentos pessoais sem uma necessidade confirmada pela equipe.</p>
+      </div>
+      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 min-h-12 px-4 py-3 bg-aba-blue text-white rounded-lg font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">
+        <MessageCircle className="h-5 w-5" aria-hidden="true" /> Falar com a equipe no WhatsApp
+      </a>
+      <p className="text-center text-gray-600">Ou escreva para <a className="underline break-all" href={'mailto:'+CONTACT_INFO.email}>{CONTACT_INFO.email}</a>.</p>
+      <nav className="flex flex-wrap justify-center gap-4 border-t pt-5" aria-label="Informações para doadores">
+        <Link className="underline text-aba-blue py-2" to="/transparencia">Consultar transparência</Link>
+        <Link className="underline text-aba-blue py-2" to="/doar">Como ajudar</Link>
+      </nav>
+    </section>
+  </div>
+);
 export default DonorArea;
